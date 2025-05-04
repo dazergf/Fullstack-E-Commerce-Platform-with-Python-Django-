@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Formulaire de connexion</title>
+    <style>
+           /* boutton acceuill_________________________________________ */
+        .boutton_acceuil{
+            position: absolute;
+            left: 0;
+            top: 0;
+            margin: 15px 15px;
+            background-color: blue;
+            font-size: large;
+            border-radius: 25px;
+            padding: 5px 12px;
+        }
+
+        .boutton_acceuil a{
+            text-decoration: none;
+            color: rgb(255, 240, 174);
+            font-weight: bold;
+            font-family: 'Arial Black';
+        }
+
+        div{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        /* ______________________________________ */
+    </style>
+</head> 
+    <body>
+        <!-- boutton acceuil________________________ -->
+        <nav class="boutton_acceuil">
+            <a href="{% url "home" %}">ACCEUIL</a>
+        </nav>
+        <!-- ________________________________________ -->
+        <div>
+            <h1> commande passer avec succes</h1>
+        </div>
+    </body>
+</html>

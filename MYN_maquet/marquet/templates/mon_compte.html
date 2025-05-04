@@ -1,0 +1,88 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Formulaire</title>
+        <link rel="stylesheet" href="{% static 'marquet/styl.css' %}">
+    </head>
+
+    <body class="mon_compte">
+          <!-- boutton acceuil________________________ -->
+        <nav class="boutton_acceuil">
+            <a href="{% url "home" %}">ACCEUIL</a>
+        </nav>
+          <!-- ________________________________________ -->
+         
+        <main>
+            <div class="info">
+                {% if user %}
+                    <div class="champ">
+                        <label for="nom">Nom:</label>
+                        <input name="nom" type="text" value="{{ user.Nom_client }}" readonly>
+                    </div>
+                    <div class="champ">
+                        <label for="prenom">Prenom:</label>
+                        <input name="prenom" type="text" value="{{ user.prenom_client }}" readonly>
+                    </div>
+                    <div class="champ">
+                        <label for="sexe">Sexe:</label>
+                        <input name="sexe" type="text" value="{{ user.sexe_client }}" readonly>
+                    </div>
+                    <div class="champ">
+                        <label for="age">Age:</label>
+                        <input name="age" type="text" value="{{ user.age_client }}" readonly>
+                    </div>
+                    <div class="champ">
+                        <label for="tel">Tel:</label>
+                        <input name="tel" type="text" value="{{ user.telephonne }}" readonly>
+                    </div>
+                    <div class="champ">
+                        <label for="address">Adresse:</label>
+                        <input name="address" type="text" value="{{ user.parselle }} Rue {{ user.rue }} {{ user.district }} {{ user.ville_client }}" readonly>
+                    </div>
+                    <div class="champ">
+                        <label for="email">Email:</label>
+                        <input name="email" type="text" value="{{ user.e_mail_client }}" readonly>
+                    </div>
+                    <div class="champ">
+                        <label for="mot_de_passe">Mot de passe:</label>
+                        <input name="mot_de_passe" type="text" value="{{ user.mot_de_passe }}" readonly>
+                    </div>
+                {% else %}
+                    <span>Aucune information trouvée pour cet utilisateur.</span><br> 
+                {% endif %}
+
+            </div>
+        </main>
+        <section class="commande_client">
+            <!-- ________________________________________________________________ -->
+             <div class="parant_historique">
+                <p class="affichage_historique">Historique des commandes</p>
+                            {% for i in CMD %}
+                                <ul class="CMD">
+                                    <li>
+                                        <div class="a">
+                                            <p>N° {{ i.0 }}</p> <p>Coût: {{ i.2 }}</p> <p>Heure: {{ i.3 }}</p>
+                                        </div>
+                                        {% for j in detail %}
+                                            {% for produit in j %}
+                                                {% if produit.2 == i.0 %}
+                                                    <ul class="detail">
+                                                        <li class="bb">
+                                                            <p style="font-weight: bold; height: 25px; width: 300px; overflow: auto;">{{ produit.0 }}</p>
+                                                            <p>prix unitaire: {{ produit.1 }}</p>
+                                                        </li>
+                                                    </ul>
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% endfor %}
+                                    </li>
+                                </ul>
+                            {% endfor %}
+
+                </div>    
+        </section>
+    </body>
+</html>

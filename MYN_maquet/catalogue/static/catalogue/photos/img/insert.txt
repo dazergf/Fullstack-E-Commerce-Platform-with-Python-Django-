@@ -1,0 +1,50 @@
+update produit
+set image = 'catalogue\\photos\\img\\gateaux_chocola.jfif'
+where ID_produit = 654;
+
+update produit
+set image = 'catalogue\\photos\\img\\Lait aromatisé.webp'
+where ID_produit = 666;
+
+update produit
+set image = 'catalogue\\photos\\img\\Gommes fruitées.webp'
+where ID_produit = 667;
+
+update produit
+set image = 'catalogue\\photos\\img\\Poulet nuggets.webp'
+where ID_produit = 668;
+
+update produit
+set image = 'catalogue\\photos\\img\\Riz en forme détoiles.webp'
+where ID_produit = 669;
+
+update produit
+set image = 'catalogue\\photos\\img\\Crème dessert au chocolat.webp'
+where ID_produit = 670;
+
+
+update produit
+set image = 'catalogue\\photos\\img\\Pouding à la vanille.webp'
+where ID_produit = 671;
+
+update produit
+set image = 'catalogue\\photos\\img\\Mini muffins aux myrtilles.webp'
+where ID_produit = 672;
+
+update produit
+set image = 'catalogue\\photos\\img\\Frites en forme de dinosaures.webp'
+where ID_produit = 673;
+
+update produit
+set image = 'catalogue\\photos\\img\\Yaourt à la fraise.webp'
+where ID_produit = 674;
+
+update produit
+set image = 'catalogue\\photos\\img\\Pâtes en forme de princesses.webp'
+where ID_produit = 675;
+
+
+
+
+
+

@@ -1,0 +1,632 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/*header de la page d'acceulles*******************/
+
+header{
+    position: fixed;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+    z-index: 1;
+    background-color: rgb(0, 0, 0, 0.6);
+    /* background-image: url(images/titre1.png);
+    background-repeat: none;
+    background-size: cover; */
+    padding: 5px 10px;
+    /* opacity: 0.6; */
+    border-radius: 10px;
+    /* box-shadow: 2px 5px 3px 4px black; */
+    color: white;
+}
+
+
+
+
+
+/* quantenaire qui englobe tutes les lite classe liste */
+.liste{
+    border:solid 1px transparent;
+    margin-top:0;
+    margin-left:-50px;
+    font-size: 17px;
+    position: relative;
+    left: 35px;
+    color: white;
+ }
+
+
+
+
+
+
+ /* liste principale qui s'affiche sur la page d'acceuil class=liste1 */
+ .liste .liste1{
+    list-style:none;
+    display:flex;
+ }
+
+ .liste li a{
+    text-decoration:none;
+    margin-left:15px;
+    font-size:24px;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+ }
+
+ .liste li a:hover{
+    font-weight:bold;
+    color: white;
+ }
+
+.liste img{
+    position: relative;
+    top: 3px;
+    height: 19px;
+    margin-right: 2px;
+}
+
+.liste li a{
+    text-decoration:none;
+    color: white;
+ }
+
+
+
+
+ /* style des liste et des sous liste qui son encadrer par le menu */
+ .menu {
+    position: absolute;
+    color: #000000;
+    width: 1270px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    margin-left: 17px;
+    padding: 0 0;
+    border-radius: 10px;
+    display: block;
+    /* cinema */
+    top: 0;
+    max-height: 0; /* Cache les sous-éléments initialement */
+    overflow: hidden; /* Cache le contenu débordant */
+    transform: scaleY(0); /* Échelle verticale initiale à 0 */
+    transform-origin: top; /* Le point d'origine de l'échelle est le haut */
+    transition: max-height 0.2s ease-out, transform 0.2s ease-out; /*Transition pour l'animation */
+}
+
+.ryss:hover .menu {
+    display: block;
+    max-height: 325px; /* Hauteur maximale des sous-éléments */
+    transform: scaleY(1); /* Échelle verticale à 1 pour l'animation */
+}
+
+
+
+
+
+/* liste secondaire classe de ul liste2 */
+.menu .liste2 p{
+    text-decoration: none;
+    color:#000000;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.menu .liste2 p:hover{
+    cursor: pointer;
+    color: black;
+    font-weight: bold;
+}
+
+.menu .liste2{
+    list-style:none;
+    width: 410px;
+    height: 325px;
+    overflow: auto;
+    z-index: 4;
+ }
+
+ .menu .liste2 li{
+    border: 1px solid transparent;
+    height: 25px;
+ }
+
+ .menu .liste2 li:hover{
+    background-color: rgb(224, 223, 112);
+    cursor: pointer;
+ }
+
+
+
+
+
+
+/* positionnement par block */
+.menu .liste2_ .sous_liste2{
+    position: absolute;
+    background-color:white;
+    left: 32%;
+    height:325px ;
+    width: 405px;
+    overflow-y: auto;
+    display: none;
+    list-style: none;
+    bottom: 0;
+    z-index: 1;
+}
+
+.menu .liste2_ .sous_liste2 p{
+    font-weight: normal;
+    font-size: 20px;
+}
+
+.menu .liste2_ .sous_liste2 li{
+    /* margin: 0 15px;
+    padding: 4px 0; */
+    height: 25px;
+}
+
+.menu .liste2_:hover{
+    color: #000000;
+    font-weight: bold;
+    /* font-size: 16px; */
+    /* margin: 10px 15px; */
+    /* background-color: rgb(88, 83, 75); */
+}
+
+
+.menu .liste2_:hover  .sous_liste2 {
+    display: block;
+    translate: 1s;
+}
+
+
+/* style block image des produit dans la derniere liste ______________ */
+.menu .sous_liste2 .images{
+    background-color:white;
+    position: fixed;
+    top: 0;
+    left: 810px;
+    height:325px ;
+    width: 405px;
+    /* bottom: 0; */
+    display: none;
+    z-index: 5;
+}
+
+.menu .images img{
+    height: 200px;
+    left: 55px;
+    top: 55px;
+}
+
+.menu .sous_liste2 li:hover .images{
+    display: block;
+}
+
+.menu .button{
+    background-color: #45f036;
+    position: absolute;
+    z-index: 6;
+    top: 270px;
+    left: 1125px;
+    font-size: 15px;
+    width: auto;
+    height: auto;
+    padding: 8px 15px;
+    font-family: 'Stencil';
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+/* _______________________________________________________________________________________ */
+
+ /* style du logo */
+.logo{
+    height: 150px;
+}
+
+/* style des langue */
+.langue{
+    background-color: #f8c68d83;
+    border: 8px solid  #8B4513;
+    position:  absolute;
+    border-radius: 20px;
+    box-shadow: 1px 1px 1px black;
+    font-size: 20px;
+    display: none;
+}
+
+
+i:hover .langue{
+    display: block;
+}
+
+.langue form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    gap: 10px;
+    margin: 17px auto   ;
+}
+
+
+.langue select{
+    border:3px solid rgb(0, 0, 0);
+    font-size: 15px;
+    width: 160px;
+    height: 30px;
+}
+
+.langue input[type="submit"]{
+    background-color: rgb(128, 195, 128);
+    font-weight: bold;
+    height: 25px;
+}
+
+.profil button{
+    font-size: 17px;
+    width: auto;
+    height: auto;
+    margin: 8px 20px;
+    padding: 8px 15px;
+    font-family: 'Stencil';
+    border-radius: 9px;
+    cursor: pointer;
+}
+
+.profil{
+    display: flex;
+    justify-content:space-evenly;
+    color: rgb(250, 254, 255);
+    align-items: center;
+}
+
+.profil a{
+    text-decoration:none;
+    margin-left:25px;
+    font-size:24px;
+    color: white;
+    font-weight: bold;
+ }
+
+ /* ajout du css ici pour le compte de l'utilisateur____________________________ */
+ .compte{
+    border-top: 3px dotted white;
+    border-bottom: 3px dotted white;
+    display: flex;
+    align-items: center;
+ }
+
+ .compte .nom{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+ }
+
+.profil .NomPrenom{
+    padding-right: 20px;
+    padding-left: 5px;
+    display: flex;
+    flex-direction: column;
+ }
+
+ .profil .NomPrenom a{
+    font-size: 17px;
+    color: white;
+    padding: 3px 5px;
+    color: #000000;
+ }
+ /* ________________________________________________________________________________ */
+
+.profil .ph{
+    height: 30px;
+    padding-left: 20px;
+}
+
+.profil img{
+    height: 19px;
+}
+
+/* {
+    margin-left: 6px;
+    margin-right: 6px;
+
+} */
+/* fin du header de la page d'acceulles*******************/
+/*stylle de la section principale*******************/
+
+/* .main
+{
+
+} */
+
+.presentation{
+    border: solid 1px transparent;
+    width: 100%;
+    height:700px;
+    /* background-color:green; */
+    background-image:url("images/2.jpg");
+    background-size:cover;
+    padding-top: 170px;
+    /* padding: 3px 15px; */
+ }
+ /* la barre recherche */
+ /* .barre{
+    width: 500px;
+    height: 50px;
+    border-radius: 20%;
+ } */
+
+ .search-container{
+    background-color:transparent;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    /* padding-left: 170px; */
+ }
+
+ .search-container input[type="search"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 3px solid #000000;
+    border-radius: 25px; /* Rondir les bordures */
+    outline: none;
+    width: 600px;
+    height: 60px;
+}
+
+
+/* l'image de la planche */
+.tableau{
+    display: flex;
+    justify-content: center;
+}
+
+.presentation img{
+    /* position: relative; */
+    height: 200px;
+    /* margin: 0 auto; */
+    /* left: 33%; */
+}
+/* le texte */
+.presentation h1{
+    margin-top: 40px;
+    font-size: 60px;
+    color: white;
+    font-family: Cooper Black;
+}
+
+/* la tableau de pub */
+/* debut du CSS de Grace //////////////////////////////////////////////////////////////////////////////////////////////////*/
+.screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 158%;
+    border: 10px solid #3498db; /* Bordure initiale */
+    transition: border-color 1s ease-in-out;
+
+}
+.typing-text {
+    font-size: 57px;
+    font-weight: bold;
+    color: #2fc025;
+    overflow: hidden; /* Cache le texte dépassant la zone */
+    white-space: nowrap; /* Empêche le retour à la ligne */
+    border-right: 2px solid #333; /* Effet de saisie */
+    animation: typing 3s steps(40) infinite;
+}
+
+/* Animation de saisie de texte avec JavaScript */
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+/*style  de la  pub*/
+#slider {
+    margin-left: 11px;
+    position: relative;
+    width: 500px;
+    height: 260px;
+    overflow: hidden;
+    box-shadow: 0 0 30px #3a3a374d;
+    border: solid transparent 4px;
+}
+#slider ul {
+   
+    display: center;
+    position: relative;
+    list-style: none;
+    height: 100%;
+    width: 10000%;
+    padding: 0;
+    margin: 0;
+    transition: all 750ms ease;
+    left: 0;
+  
+}
+#slider ul li {
+    position: relative;
+    height: 100%;
+    float: left;
+}
+#slider ul li img {
+    width: 500px;
+    height: 265px;
+}
+#slider #prev,
+#slider #next {
+    width: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    position: absolute;
+    top: 50%;
+    border-radius: 50%;
+    font-size: 2rem;
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+    transform: translateY(-50%);
+    transition: all 150ms ease;
+}
+/*Slider1*/
+#slider1 {
+    margin-left: 15px;
+    margin-right: 15px;
+    position: relative;
+    width: 500px;
+    height: 260px;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+    background-size: cover;
+    border: solid transparent 4px;
+}
+#slider1 ul {
+   
+    display: center;
+    position: relative;
+    list-style: none;
+    height: 100%;
+    width: 10000%;
+    padding: 0;
+    margin: 0;
+    transition: all 750ms ease;
+    left: 0;
+  
+}
+#slider1 ul li {
+    position: relative;
+    height: 100%;
+    float: left;
+}
+#slider1 ul li img {
+    width: 500px;
+    height: 265px;
+}
+#slider1 #prev,
+#slider1 #next {
+    width: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    position: absolute;
+    top: 50%;
+    border-radius: 50%;
+    font-size: 2rem;
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+    transform: translateY(-50%);
+    transition: all 150ms ease;
+    
+}
+#slider1 img{
+    size: cover;
+}
+/*Slider2*/
+#slider2 {
+    margin-left: 0;
+    margin-right: 13px;
+    position: relative;
+    width: 500px;
+    height: 260px;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+    border: solid transparent 4px;
+}
+#slider2 ul {
+   
+    display: center;
+    position: relative;
+    list-style: none;
+    height: 100%;
+    width: 10000%;
+    padding: 0;
+    margin: 0;
+    transition: all 750ms ease;
+    left: 0;
+  
+}
+#slider2 ul li {
+    position: relative;
+    height: 100%;
+    float: left;
+}
+#slider2 ul li img {
+    width: 500px;
+    height: 265px;
+}
+#slider2 #prev,
+#slider2s #next {
+    width: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    position: absolute;
+    top: 50%;
+    border-radius: 50%;
+    font-size: 2rem;
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+    transform: translateY(-50%);
+    transition: all 150ms ease;
+}
+.ss{
+    display: flex;
+    border: solid red 4px;
+    background-color: transparent;
+    /*position: absolute;
+   /* top: 0;
+    left: 0;
+    width: 50%;
+    height: 130%;*/
+    border: 10px solid transparent; /* Bordure initiale */
+    transition: border-color 1s ease-in-out;
+
+}
+.pub-text {
+    font-size: 18px;
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* debut du footer*/
+footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    border-top: 2px solid black;
+}
+
+/* .foot {
+    border:none;
+    padding: 10px;
+    background-color: grey;
+} */
+
+.foot p a{
+    text-decoration: none;
+    color:white;
+}
+
+

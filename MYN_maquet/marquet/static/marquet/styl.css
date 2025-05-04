@@ -1,0 +1,107 @@
+body{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height:100vh;
+    background-color: rgb(248, 233, 165) ; 
+}
+
+
+.info{
+    border: solid 5px black;
+    background-color: black;
+    width:300px;
+    border-radius:10px;
+    display:grid;
+    margin-top:60px;
+    margin:0;
+}
+
+
+.info label{
+    color:white;
+}
+
+
+
+.champ {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    
+    
+    /* boutton acceuill_________________________________________ */
+.boutton_acceuil{
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 15px 15px;
+    background-color: blue;
+    font-size: large;
+    border-radius: 25px;
+    padding: 5px 12px;
+}
+
+.boutton_acceuil a{
+    text-decoration: none;
+    color: rgb(255, 240, 174);
+    font-weight: bold;
+    font-family: 'Arial Black';
+}
+/* ______________________________________ */
+ 
+
+
+.commande_client .bouton_commande{
+    background-color: green;
+    cursor: pointer;
+    
+}
+
+/* css de la deeuxieme sectio_______________________________________ */
+
+
+.parant_historique{
+    background-color: rgb(233, 231, 139);
+    margin: 10px 2px;
+    padding: 10px 10px;
+    box-shadow: 0px 2px 15px black;
+}
+
+.affichage_historique{
+    margin: 3px auto;
+    font-weight: bold;
+    text-align: center;
+    font-size: x-large;
+    text-decoration: underline dotted black;
+    cursor: pointer;
+} 
+
+li{
+    list-style: none;
+}
+
+.a{
+    font-weight: bold;
+    display: flex;
+    justify-content: space-around;
+    border-top: 1px solid black;
+}
+
+.CMD{
+    display: none;
+}
+
+.parant_historique:hover .CMD{
+    display: block;
+}
+
+.bb{
+    display: flex;
+    justify-content: space-around;
+    text-align: justify;
+}

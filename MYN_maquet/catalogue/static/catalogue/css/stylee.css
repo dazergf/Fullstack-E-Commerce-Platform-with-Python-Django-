@@ -1,0 +1,274 @@
+*{
+    box-sizing: border-box;
+    
+}
+body{
+    display: grid;
+    grid-template-areas: "entete entete"
+                         "navigation principal";
+    grid-template-columns: 1fr 6fr;
+    background-image:url(images/acceuil2.JPG);
+    margin: 0px;
+    color: gray;
+    font-family: 'Broadway';
+    background-attachment: fixed;
+    /* background-repeat: no-repeat;
+    background-size: cover; */
+    scrollbar-color: black;
+    
+}
+/* main de class="categorie" */
+main{grid-area: principal;}
+
+/* Menu de navigation de class="Navigation" */
+nav{grid-area: navigation;border: #000000 2px solid;
+
+    /* color:#ada052; */
+    text-shadow: 1px 1px 1px #ffffff;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    background-color: #f0f6ffe7;
+}
+nav div{
+    display: grid;
+    justify-content: center;
+    gap:30px;
+    position: sticky;
+    top:0px;
+    padding-top: 15px;
+    border-top: #100f0f 4px solid;
+
+
+}
+.titre_nav{
+    background-color:rgb(0, 0, 0) ;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    height: 50px;
+    margin: 0px;
+}
+
+nav div a{
+
+    text-decoration: none;
+    color:#020202;
+    font-family: monospace;
+    font-size: large;
+    letter-spacing: 2px;
+
+
+}
+
+/* les balise <a> du Nav */
+
+nav div a:hover{
+
+    color: #040404;
+    text-decoration: underline;
+
+}
+header{
+    grid-area: entete;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #0d0d0d;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+
+}
+header h1 a{
+    text-decoration: none;
+    /* color:#68a91e; */
+    color: gray;
+}
+header img{
+    height: 70px;
+}
+
+
+
+
+
+
+
+
+/* block constitué uniquement de grandes section de categorie*/
+.categorie{
+    display:flex;
+    flex-direction: column;
+    border:none;
+    justify-content: space-between;
+    height: 100%;
+    gap:30px;
+    border-top: #100f0f 4px solid;
+    border-right: #100f0f 4px solid; 
+    border-bottom: #100f0f 4px solid;
+}
+
+/* une categorie et son titre*/
+.cat1{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: #ffffff 5px solid;
+    border-top:  #aeaeae 2px solid;
+
+
+}
+/* partie titre categorie */
+.c_titre{
+    display: flex;
+    align-items: center;
+    background-color: #373737;
+    /* color:#ada052; */
+    font-weight: bold;
+    text-shadow: 1px 1px 1px #ffffff;
+    margin: 0;
+    height: 45px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    
+
+
+}
+
+/* une section qui compte plusieurs articles*/
+.cat1_1{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    background-color: #0e0e0e7a; 
+    max-height: 500px;
+    overflow-y: scroll;    
+}
+.cat1_1::-webkit-scrollbar{
+    background-color: #868585;
+    
+}
+
+.cat1_1::-webkit-scrollbar-button{
+    background-color: #e7eee7;
+    border-radius: 3px;
+
+}
+.cat1_1::-webkit-scrollbar-thumb{
+    background-color:rgb(0, 0, 0);
+    
+}
+
+
+/*un article contenant une photos , description, nom, bouton ajouter au pannier et prix*/
+.article{
+    display:flex;
+    border:solid 4px rgb(0, 0, 0);
+    border-radius: 5px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    gap: 10px;
+    background-color: #ffffff;
+    max-width: 150px;
+    
+    
+}
+.photos{
+    width: 100px;
+    height: 75px;
+}
+
+
+/* libelle article*/
+.libelle{
+    display:none;
+    max-width: 250px;
+    height: 70px;
+    word-wrap:break-word;
+    border:solid #ffffffe4 1px;
+    overflow-y: scroll;
+    border-radius: 5px;
+    background-color: #202020dd;
+    text-align: center;
+    font-family:sans-serif;
+    font-size: small;
+    color: #ffffffc7;
+}
+/* prix article */
+.prix{
+        
+    outline: #000000 solid 4px;
+    border: #000000af solid 2px;
+    border-radius: 2px;
+    background-color: #000000;
+    color:#daa520bb;
+    width: 100%;
+    font-style: italic;  
+    text-align: center;
+    
+    
+} 
+.nom{
+    font-style: italic;
+    font-family:'Times New Roman', monospace ,Times, serif;
+    font-weight: bold;
+    color: #000000;
+    text-shadow: 1px 2px 1px #8f918c;
+    
+}
+
+
+.add{
+    height: 20px;
+    width: auto;
+}
+.checkbox{
+    background-color: #000000;
+    width: 100%;
+}
+.ajouter{
+    color: #ffffff;
+    font-size: x-small;
+}
+.submit_bt{
+    background-image: url(images/icons8-add-91.png);
+    position: fixed;
+    top: 470px;
+    left: 1100px;
+    background-color: rgb(1, 196, 17);
+    color:#373737;
+    width: 120px;
+    height: 100px;
+    border-radius: 50px;
+    box-shadow: 1px 1px 25px rgb(0, 0, 0) ;
+    opacity: 0.8;
+    color: transparent;
+    border: 3px solid rgb(14, 13, 13);
+}
+.submit_bt:focus{
+    background-color: #c3ff00;
+
+    opacity: 1;
+}
+ 
+/* boutton acceuill_________________________________________ */
+.boutton_acceuil{
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 15px 15px;
+    background-color: blue;
+    font-size: large;
+    border-radius: 25px;
+    padding: 5px 12px;
+}
+
+.boutton_acceuil a{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-family: 'Arial Black';
+}
+/* ______________________________________________________________*/

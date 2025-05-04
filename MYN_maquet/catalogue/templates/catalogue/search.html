@@ -1,0 +1,61 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MYN MARQUET</title>
+        <link rel='stylesheet' href="{% static 'catalogue/css/stylee.css' %}">
+    </head>
+
+    <body>
+        <header>
+            <img src="{% static 'Acceuil/images/2.png' %}" >
+            <h1 ><a href="{% url 'acceuil' %}">Super Marche MYN MARKET</a></h1>
+            <img src="{% static 'Acceuil/images/2.png' %}" >
+        </header>
+        
+        <nav>
+        
+        </nav>   
+        <main>
+            <form  method="GET" action="/catalogue/panier/" >
+                <section class="cat1">
+                    <div class="c_titre">
+                        <h1 id="hygiene" class="titre">R E C H  E R C H</h1>
+                    </div>
+                    <section class='cat1_1'>
+
+                        {% for i in element_trouve %}
+                            
+                                <article class='article'>
+                                    <div class="checkbox">
+
+                                        <input type="checkbox" value="{{i.0}}" name="produit">
+                                        <span class="ajouter">Ajouter</span>
+                                        <img class="add" src="{% static 'catalogue\css\images\icons8-add-32 (1).png' %}">
+
+                                    </div>
+
+                                    <figure>
+                                        <img class="photos" src='{% static i.10 %}' >
+                                        <figcaption class='nom'>{{i.2}} </figcaption>
+                                    </figure>
+
+                                    <span class='prix'>Prix:{{i.5}}</span>
+                                    <span class='libelle'>libelle:{{i.7}}</span>
+                                </article>
+                            
+                        {% endfor %}
+
+                    </section>
+                </section>
+
+
+
+
+                <input class="submit_bt" type="submit" name="CONFIRMER_CATALOGUE" value="CONFIRMER" >
+            </form>
+         </main>    
+
+    </body>
+</html>

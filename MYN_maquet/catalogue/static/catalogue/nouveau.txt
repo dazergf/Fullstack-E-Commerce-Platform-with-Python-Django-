@@ -1,0 +1,260 @@
+<body>
+        <header>
+
+            <img src="{% static 'Acceuil/images/logo2.png' %}" >
+            <h1 ><a href="{% url 'acceuil' %}">Super Marche MYN MARKET</a></h1>
+            <img src="{% static 'Acceuil/images/logo2.png' %}" >
+
+        </header>
+        <!-- boutton acceuil_________________________________________________________-->
+         <nav class="boutton_acceuil">
+            <a href="{% url "home" %}">ACCEUIL</a>
+        </nav>
+        <!-- ________________________________________________________________________-->
+        <nav class="Navigation">
+            <h2 class="titre_nav">CATALOGUE</h2>
+
+            <div>
+
+                {% for item in categorie %}
+                    <a href="#{{item.0}}"> {{ item.0 }} </a>
+
+                {% endfor %}
+
+            </div>
+
+
+        </nav>
+
+        <main class='categorie'>
+            <form title="ajouter au pannier" method="POST" action="#">
+                <section class="cat1">
+                    <div class="c_titre">
+                        <h1 id="Alimentation" class="titre">Alimentation</h1>
+                    </div>
+                    <section class='cat1_1'>
+
+                        {% for i in clee %}
+                        {% if i.6 == 'Alimentation' %}
+                            <article class='article'>
+                                <div class="checkbox">
+
+                                    <input type="checkbox" value="{{i.0}}" name="produit" >
+                                    <img class="add" src="{% static 'catalogue\css\images\icons8-add-32 (1).png' %}">
+                                    <span class="ajouter">Ajouter</span>
+
+                                </div>
+
+                                <figure>
+                                    <img class="photos" src='{% static i.10 %}' >
+                                    <figcaption class='nom'>{{ i.2 }}</figcaption>
+                                </figure>
+                                <span class='prix'>Prix: {{ i.5 }}</span>
+                                <span class='libelle'>libelle: {{ i.7 }}</span>
+                            </article>
+                        {% endif %}
+                    {% endfor %}
+
+                    </section>
+                </section>
+
+
+                <section class="cat1">
+                    <div class="c_titre">
+                        <h1 id="Fruits frais" class="titre">Fruits frais</h1>
+                    </div>
+                    <section class='cat1_1'>
+
+                        {% for i in clee %}
+                            {% if i.6 == 'Fruits frais' %}
+                                <article class='article'>
+
+                                    <div class="checkbox">
+
+                                        <input type="checkbox" value="{{i.0}}" name="produit">
+                                        <span class="ajouter">Ajouter</span>
+                                        <img class="add" src="{% static 'catalogue\css\images\icons8-add-32 (1).png' %}">
+
+                                    </div>
+
+
+                                    <figure>
+                                        <img class="photos" src='{% static i.10 %}' >
+                                        <figcaption class='nom'>{{i.2}} </figcaption>
+                                    </figure>
+
+                                    <span class='prix'>{{i.5}} XAF</span>
+                                    <span class='libelle'>libelle:{{i.7}}</span>
+                                </article>
+                            {% endif %}
+                        {% endfor %}
+
+                    </section>
+                </section>
+
+                <section class="cat1">
+                    <div class="c_titre">
+                        <h1 id="TV & Vidéo" class="titre">TV & video</h1>
+                    </div>
+                    <section class='cat1_1'>
+
+                        {% for i in clee %}
+                            {% if i.6 == 'TV & Vidéo' %}
+                                <article class='article'>
+                                    <div class="checkbox">
+
+                                        <input type="checkbox" value="{{i.0}}" name="produit">
+                                        <span class="ajouter">Ajouter</span>
+                                        <img class="add" src="{% static 'catalogue\css\images\icons8-add-32 (1).png' %}">
+
+                                    </div>
+
+                                    <figure>
+                                        <img class="photos" src='{% static i.10 %}' >
+                                        <figcaption class='nom'>{{i.2}} </figcaption>
+                                    </figure>
+
+                                    <span class='prix'>Prix:{{i.5}}</span>
+                                    <span class='libelle'>libelle:{{i.7}}</span>
+                                </article>
+                            {% endif %}
+                        {% endfor %}
+
+                    </section>
+                </section>
+
+                <section class="cat1">
+                    <div class="c_titre">
+                        <h1 id="Ordinateurs" class="titre">Ordinateurs</h1>
+                    </div>
+                    <section class='cat1_1'>
+
+                        {% for i in clee %}
+                            {% if i.6 == 'Ordinateurs' %}
+                                <article class='article'>
+                                    <div class="checkbox">
+
+                                        <input type="checkbox" value="{{i.0}}" name="produit">
+                                        <span class="ajouter">Ajouter</span>
+                                        <img class="add" src="{% static 'catalogue\css\images\icons8-add-32 (1).png' %}">
+
+                                    </div>
+
+                                    <figure>
+                                        <img class="photos" src='{% static i.10 %}' >
+                                        <figcaption class='nom'>{{i.2}} </figcaption>
+                                    </figure>
+
+                                    <span class='prix'>Prix:{{i.5}}</span>
+                                    <span class='libelle'>libelle:{{i.7}}</span>
+                                </article>
+                            {% endif %}
+                        {% endfor %}
+
+                    </section>
+                </section>
+
+                <section class="cat1">
+                    <div class="c_titre">
+                        <h1 id="Électroménager" class="titre">Électroménager</h1>
+                    </div>
+                    <section class='cat1_1'>
+
+                        {% for i in clee %}
+                            {% if i.6 == 'Électroménager' %}
+                                <article class='article'>
+                                    <div class="checkbox">
+
+                                        <input type="checkbox" value="{{i.0}}" name="produit">
+                                        <span class="ajouter">Ajouter</span>
+                                        <img class="add" src="{% static 'catalogue\css\images\icons8-add-32 (1).png' %}">
+
+                                    </div>
+
+                                    <figure>
+                                        <img class="photos" src='{% static i.10 %}' >
+                                        <figcaption class='nom'>{{i.2}} </figcaption>
+                                    </figure>
+
+                                    <span class='prix'>Prix:{{i.5}}</span>
+                                    <span class='libelle'>libelle:{{i.7}}</span>
+                                </article>
+                            {% endif %}
+                        {% endfor %}
+
+                    </section>
+                </section>
+
+                <section class="cat1">
+                    <div class="c_titre">
+                        <h1 id="Sport" class="titre">Sport</h1>
+                    </div>
+                    <section class='cat1_1'>
+
+                        {% for i in clee %}
+                            {% if i.6 == 'Sport' %}
+                                <article class='article'>
+                                    <div class="checkbox">
+
+                                        <input type="checkbox" value="{{i.0}}" name="produit">
+                                        <!-- <span class="ajouter">Ajouter</span> -->
+                                        <img class="add" src="{% static 'catalogue\css\images\icons8-add-32 (1).png' %}">
+
+                                    </div>
+
+                                    <figure>
+                                        <img class="photos" src='{% static i.10 %}' >
+                                        <figcaption class='nom'>{{i.2}} </figcaption>
+                                    </figure>
+
+                                    <span class='prix'>Prix:{{i.5}}</span>
+                                    <span class='libelle'>libelle:{{i.7}}</span>
+                                </article>
+                            {% endif %}
+                        {% endfor %}
+
+                    </section>
+                </section>
+
+                <section class="cat1">
+                    <div class="c_titre">
+                        <h1 id="hygiene" class="titre">hygiene</h1>
+                    </div>
+                    <section class='cat1_1'>
+
+                        {% for i in clee %}
+                            {% if i.6 == 'hygiene' %}
+                                <article class='article'>
+                                    <div class="checkbox">
+
+                                        <input type="checkbox" value="{{i.0}}" name="produit">
+                                        <span class="ajouter">Ajouter</span>
+                                        <img class="add" src="{% static 'catalogue\css\images\icons8-add-32 (1).png' %}">
+
+                                    </div>
+
+                                    <figure>
+                                        <img class="photos" src='{% static i.10 %}' >
+                                        <figcaption class='nom'>{{i.2}} </figcaption>
+                                    </figure>
+
+                                    <span class='prix'>Prix:{{i.5}}</span>
+                                    <span class='libelle'>libelle:{{i.7}}</span>
+                                </article>
+                            {% endif %}
+                        {% endfor %}
+
+                    </section>
+                </section>
+
+
+
+
+                <input class="submit_bt" type="submit"  value="CONFIRMER" >
+            </form>
+
+        </main>
+
+
+    </body>
+</html>
