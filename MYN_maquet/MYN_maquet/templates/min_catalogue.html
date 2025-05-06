@@ -1,0 +1,27 @@
+<div class="categories">
+
+    <a href="#"><img src="{% static 'marquet/images/liste.png' %}">Nos Categories</a>
+    <!-- liste des categoriesdans longlet menu -->
+    <form method="GET" action="/catalogue/panier/">
+        <ul class="category_list">
+            {% for i in categorie %}
+            <li class="category_item">
+                <p class="category_item">{{ i.0 }}</p>
+                <ul class="product_by_category_list">
+                    {% for j in produit %}
+                    {% if j.6 == i.0 %}
+                    <li class="product_item">
+                        <label><input type="checkbox" value="{{ j.0 }}" name="produit">{{ j.2 }}</label>
+                        <div class="images">
+                            <img src="{% static j.10 %}" alt="">
+                        </div>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </li>
+            {% endfor %}
+        </ul>
+        <input class="button" type="submit" value="CONFIRMER" name="CONFIRMER_CATALOGUE">
+    </form>
+</div>

@@ -1,0 +1,21 @@
+{% load static %}
+<div class="langue-selector">
+    <a href="#" class="langue-toggle">
+        
+        <img src="{% static 'marquet/images/monde.png' %}" alt="Icône langue"> 
+        <span>Langues</span>
+        
+    </a>
+    <div class="langue-form">
+        <form action="" method="post">
+            {% csrf_token %}
+            <p><strong>Sélectionnez une langue de votre choix</strong></p>
+            <select name="langue">
+                <option value="fr">Français</option>
+                <option value="en">Anglais</option>
+                <option value="pt">Portugais</option>
+            </select>
+            <input type="submit" value="Sauvegarder">
+        </form>
+    </div>
+</div>

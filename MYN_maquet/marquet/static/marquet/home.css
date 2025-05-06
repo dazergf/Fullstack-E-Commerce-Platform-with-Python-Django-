@@ -1,0 +1,60 @@
+/* Section principale */
+.main {
+    color: white;
+    text-align: center;
+    padding: 80px 20px;
+    background:url("images/acceuil1.JPG") no-repeat center center/cover ;
+    
+}
+.presentation{
+    font-size: 2.8rem;
+    background:black;
+}
+
+
+/* Section des fonctionnalités */
+.features-section {
+    background-color: #f9f9f9;
+    padding: 60px 20px;
+}
+
+.features-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Cartes individuelles */
+.feature-card {
+    background-color: white;
+    padding: 30px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.feature-image {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+}
+
+.feature-title {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.feature-description {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.5;
+}

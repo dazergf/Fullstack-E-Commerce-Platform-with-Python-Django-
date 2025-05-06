@@ -1,129 +1,119 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/*header de la page d'acceulles*******************/
-header{
-    position: fixed;
-    width: 100%;
+/* Structure de base */
+body{ margin:0}
+header {
     display: flex;
-    align-items: center;
-    text-align: center;
+    flex-wrap: wrap;
     justify-content: space-between;
-    z-index: 1;
-    background-color: rgb(0, 0, 0, 0.6);
-    padding: 5px 10px;
-    border-radius: 10px;
-    color: white;
+    align-items: center;
+    padding: 20px;
+    background-color: white;  
+    position:sticky;
+    top:0;
+
 }
 
-/* quantenaire qui englobe toutes les listes classe liste */
-.liste{
-    border: solid 1px transparent;
-    margin-top: 0;
-    margin-left: -50px;
-    font-size: 17px;
-    position: relative;
-    left: 35px;
-    color: white;
+.logo-container .logo {
+    height: 60px;
 }
 
-/* liste principale qui s'affiche sur la page d'accueil class=liste1 */
-.liste .liste1{
-    list-style: none;
-    display: flex;
-}
+/* Menu */
 
-.liste li a{
-    text-decoration: none;
-    margin-left: 15px;
-    font-size: 24px;
-    color: rgb(255, 255, 255);
-    font-weight: bold;
-}
-
-.liste li a:hover{
-    font-weight: bold;
-    color: white;
-}
-
-.liste img{
-    position: relative;
-    top: 3px;
-    height: 19px;
-    margin-right: 2px;
-}
-
-/* style du logo */
-.logo{
-    height: 150px;
-}
-
-/* style des langues */
-.langue{
-    background-color: #f8c68d83;
-    border: 8px solid #8B4513;
-    position: absolute;
-    border-radius: 20px;
-    box-shadow: 1px 1px 1px black;
-    font-size: 20px;
+.menu-toggle {
     display: none;
-}
-
-i:hover .langue{
-    display: block;
-}
-
-.langue form{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    gap: 10px;
-    margin: 17px auto;
-}
-
-.langue select{
-    border: 3px solid rgb(0, 0, 0);
-    font-size: 15px;
-    width: 160px;
-    height: 30px;
-}
-
-.langue input[type="submit"]{
-    background-color: rgb(128, 195, 128);
-    font-weight: bold;
-    height: 25px;
-}
-
-.profil button{
-    font-size: 17px;
-    width: auto;
-    height: auto;
-    margin: 8px 20px;
-    padding: 8px 15px;
-    font-family: 'Stencil';
-    border-radius: 9px;
+    background: none;
+    border: none;
+    font-size: 16px;
     cursor: pointer;
-}
-
-.profil{
-    display: flex;
-    justify-content: space-evenly;
-    color: rgb(250, 254, 255);
     align-items: center;
 }
 
-.profil a{
+.menu-toggle img {
+    width: 24px;
+    margin-right: 8px;
+}
+
+.menu_list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 20px;
+}
+
+.menu_list li a {
     text-decoration: none;
-    margin-left: 25px;
-    font-size: 24px;
-    color: white;
+    color: black;
+    font-weight: bold;
+    transition: color 0.3s;
+    text-shadow: 2px 2px 4px green;
+}
+
+.menu_list li a:hover {
+    color: yellowgreen;
+}
+
+/* Profil utilisateur */
+.profil {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.profil a,
+.profil button {
+    text-decoration: none;
+    background: none;
+    border: none;
+    color: #333;
+    font-size: 14px;
+    cursor: pointer;
     font-weight: bold;
 }
 
-.profil img{
-    height: 19px;
+.profil button {
+    background-color: #007BFF;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.profil button:hover {
+    background-color: #0056b3;
+}
+
+
+
+/* Responsive */
+@media (max-width: 768px) {
+    .menu_list {
+        flex-direction: column;
+        background: #fff;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        display: none;
+        padding: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .menu.open .menu_list {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .profil {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 15px;
+    }
 }

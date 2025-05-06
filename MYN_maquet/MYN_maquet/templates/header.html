@@ -1,32 +1,39 @@
 {% load static %}
 <header>
-    <div class="liste">
-        <ul class="liste1">
-            <li class="ryss"><a href="#"><img src="{% static 'marquet/images/liste.png' %}">Nos Categories</a>
-            </li>
-            <li><a href="{% url 'catalogue' %}">Catalogue</a></li>
-            <li><a href="#" style="color: transparent">Nous sommes qui</a></li>
+    <!-- Logo principal -->
+    <div class="logo-container">
+        <a href="{% url 'acceuil' %}">
+            <img src="{% static 'marquet/images/2.png' %}" alt="Logo du site" class="logo">
+        </a>
+    </div>
+
+    <!-- Menu de navigation -->
+    <nav class="menu">
+        <button class="menu-toggle" aria-label="Ouvrir le menu">
+            <img src="{% static 'marquet/images/menu.png' %}" alt="Icône menu">
+            Menu
+        </button>
+        <ul class="menu_list">
+            <li><a href="{% url 'acceuil' %}">Accueil</a></li>
+            <li><a href="{% url 'catalogue' %}">Notre Cataloque</a></li>
+            <li><a href="">Nos Marques</a></li>
+            <li><a href="#">Nos Promotions</a></li>
         </ul>
-    </div>
+    </nav>
 
-    <img src="{% static 'marquet/images/2.png' %}" class="logo">
-
-
+    <!-- bare de recherche-->
+    {% include "search_bar.html" %} 
+    
+    <!-- Profil utilisateur -->
     <div class="profil">
-        <i><a href=""><img src="{% static 'marquet/images/monde.png' %}">Langues</a>
-            <div class="langue">
-                <form action="">
-                    <p style="font-weight: bold;">Selectionnez une langue de votre choix</p>
-                    <select name="langue" id="">
-                        <option value="">Français</option>
-                        <option value="">Anglais</option>
-                        <option value="">Portugais</option>
-                    </select>
-                    <input type="submit" value="SAUVEGARDER">
-                </form>
-            </div>
-        </i>
-        <a href="{% url "login" %}"><img src="{% static 'marquet/images/user.png' %}">Se connecter</a>
-        <a href="{% url "registere" %}"><button>S'inscrire</button></a>
+        
+        {% include "select_langages.html" %} 
+        <a href="{% url 'login' %}" class="login-link">
+           Se connecter
+        </a>
+        <a href="{% url 'register' %}" class="register-link">
+            <button>S'inscrire</button>
+        </a>
     </div>
+    
 </header>

@@ -1,72 +1,58 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block extends_css %}
+<link rel="stylesheet" href="{% static 'marquet/home.css' %}">
+{% endblock extends_css %}
 
 {% block block %}
 <section class="main">
     <section class="presentation">
-        <div class="search-container">
-            <form method="get" action="/catalogue/search">
-                <input type="search" name="Barre_de_recherche" placeholder="search" value="">
-            </form>
-        </div>
-
-        <div class="tableau"><img src="{% static 'marquet/images/planche3.png' %}"></div>
-
-        <h1>LE SUPER MARCHE<br>PLUS PROCHE DE CHEZ VOUS</h1>
+        
+            
+            <h1>LE SUPER MARCHÉ<br>PLUS PROCHE DE CHEZ VOUS</h1>
+        
     </section>
-    <!-- deuxieme partie -->
-    <section>
-        <div class="ss">
-            <div class="pub-text">Découvrez notre offre spéciale !</div>
-            <div id="slider">
-                <ul id="slideWrap">
-                    <li><img src="{% static 'marquet/images/a.jpg' %}"></li>
-                    <li><img src="{% static 'marquet/images/chaussures-de-basket.jpg' %}" alt=""></li>
-                    <li><img src="{% static 'marquet/images/nikes1.jpg' %}" alt=""></li>
-                    <li><img src="{% static 'marquet/images/nike_streakfly_2-1024x767.jpg' %}" alt=""></li>
-                    <li><img src="{% static 'marquet/images/nike4.jpg' %}" alt=""></li>
-                </ul>
-
-                <a id="prev" href="#"></a>
-                <a id="next" href="#"></a>
-            </div>
-
-
-            <!--slider2-->
-            <div id="slider1">
-                <ul id="slideWrap1">
-                    <li><img src="{% static 'marquet/images/pub1.jpeg' %}" alt=""></li>
-                    <li><img src="{% static 'marquet/images/pub2.jpeg' %}" alt=""></li>
-                    <li><img src="{% static 'marquet/images/IMG_3776.JPG' %}" alt=""></li>
-                    <li><img src="{% static 'marquet/images/acceuil2.JPG' %}" alt=""></li>
-                    <li><img src="{% static 'marquet/images/espoir.jpeg' %}" alt=""></li>
-                </ul>
-                <a id="prev" href="#"></a>
-                <a id="next" href="#"></a>
-            </div>
-
-            <!--slider2-->
-
-            <div id="slider2">
-
-                <ul id="slideWrap2">
-
-                    <li><img src="{% static 'marquet/images/Corndogs-7832ef6.jpg' %}" alt=""></li>
-                    <li><img src="{% static 'marquet/images/164712019-hamburger-fast-food-sandwich-embleme-realiste-isole-sur-illustration-vectorielle-fond-blanc.jpg' %}"
-                            alt=""></li>
-                    <li><img src="{% static 'marquet/images/3312701-poulet-frit-restauration-rapide-sur-plat-blanc-isole-sur-fond-blanc-gratuit-photo.jpg' %}"
-                            alt=""></li>
-                    <li><img src="{% static 'marquet/images/35c1c89e-408c-4449-9abe-f109068f40c0.jpg' %}" alt=""></li>
-                    <li><img src="{% static 'marquet/images/17tootired-grilled-cheese-articleLarge.jpg' %}" alt=""></li>
-                </ul>
-                <a id="prev" href="#"></a>
-                <a id="next" href="#"></a>
-            </div>
-
-        </div>
-    </section>
-
 </section>
+<!-- deuxieme partie -->
+<section class="features-section">
+    <div class="features-wrapper">
+        <div class="feature-card">
+            <img src="https://img.icons8.com/color/96/shopping-cart.png" alt="Produits" class="feature-image">
+            <h2 class="feature-title">Produits de qualité</h2>
+            <p class="feature-description">Nous offrons une large gamme de produits de qualité supérieure.</p>
+        </div>
+        <div class="feature-card">
+            <img src="https://t3.ftcdn.net/jpg/00/37/74/54/360_F_37745402_TRmrIMrOdSnBSP4lg2ZEiACJNoUOgD50.jpg" alt="Livraison rapide" class="feature-image">
+            <h2 class="feature-title">Livraison rapide</h2>
+            <p class="feature-description">Profitez d'une livraison rapide et fiable à votre porte.</p>
+        </div>
+        <div class="feature-card">
+            <img src="https://img.icons8.com/color/96/customer-support.png" alt="Support" class="feature-image">
+            <h2 class="feature-title">Service client exceptionnel</h2>
+            <p class="feature-description">Notre équipe est là pour vous aider à chaque étape.</p>
+        </div>
+    </div>
+</section>
+<section class="features-section">
+    <div class="features-wrapper">
+        <div class="feature-card">
+            <img src="https://img.icons8.com/color/96/guarantee.png" alt="Garantie" class="feature-image">
+            <h2 class="feature-title">Satisfaction garantie</h2>
+            <p class="feature-description">Nous garantissons votre satisfaction ou vous êtes remboursé.</p>
+        </div>
+        <div class="feature-card">
+            <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=96&h=96&q=80" alt="Éco-responsable" class="feature-image">         
+            <h2 class="feature-title">Éco-responsable</h2>
+            <p class="feature-description">Nos produits respectent l’environnement à chaque étape.</p>
+        </div>
+        <div class="feature-card">
+            <img src="https://img.icons8.com/color/96/price-tag-euro.png" alt="Prix compétitifs" class="feature-image">
+            <h2 class="feature-title">Prix compétitifs</h2>
+            <p class="feature-description">Des tarifs justes pour une qualité premium.</p>
+        </div>
+    </div>
+</section>
+
 {% endblock block %}
 

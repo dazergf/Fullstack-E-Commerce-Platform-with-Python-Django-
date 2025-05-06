@@ -1,0 +1,70 @@
+.langue-selector {
+    position: relative;
+    display: inline-block;
+    font-family: Arial, sans-serif;
+}
+
+.langue-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #f0f0f0;
+    padding: 10px 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.langue-toggle:hover {
+    background-color: #e0e0e0;
+}
+
+
+
+.langue-form {
+    display: none;
+    position: absolute;
+    top: 110%;
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    min-width: 220px;
+}
+
+.langue-selector:hover .langue-form {
+    display: block;
+}
+
+.langue-form p {
+    margin: 0 0 10px;
+    font-weight: bold;
+    color: #555;
+}
+
+.langue-form select {
+    width: 100%;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.langue-form input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.langue-form input[type="submit"]:hover {
+    background-color: #0056b3;
+}
