@@ -8,10 +8,9 @@ connection=conn.connect(
     
 
 cursor=connection.cursor()
-cursor.execute(" select  * from produit group by nom_produit ")    
-solution=cursor.fetchall()
+cursor.execute("select * from produit group by nom_produit ")    
+product=cursor.fetchall()
 cursor.execute("SELECT categorie_produit FROM produit GROUP by categorie_produit")
-solution2=cursor.fetchall()
-#print(solution)
+categoryProduct=cursor.fetchall()
 cursor.close()
 connection.disconnect()

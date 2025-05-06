@@ -1,0 +1,16 @@
+footer {
+    background-color: #ffebebaf;
+    color: rgb(71, 72, 70);
+    text-align: center;
+    border-top: 5px solid #131313;
+    
+    
+}
+
+
+
+.foot p a{
+    text-decoration: none;
+    color:rgb(219, 64, 64);
+
+}

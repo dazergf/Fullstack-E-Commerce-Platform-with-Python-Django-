@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta sharset="utf-8">
+    <link rel="stylesheet" href="{% static 'footer.css' %}">
+    <link rel="stylesheet" href="{% static 'header.css' %}">
+    
+</head>
+
+<body>
+    {% include "header.html" %} 
+    {% block block %}
+
+    
+    {% endblock block %}
+    {% include "footer.html" %}
+</body>
+
+</html>

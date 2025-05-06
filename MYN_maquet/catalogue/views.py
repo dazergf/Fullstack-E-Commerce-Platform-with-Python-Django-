@@ -2,13 +2,13 @@ from django.shortcuts import redirect, render,HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 import mysql.connector as conn
 import catalogue.globals as a
-from .models import solution,solution2
+from .models import product,categoryProduct
 import marquet.views 
 
 
 @csrf_exempt
 def catalogue(request):
-    return render(request,'catalogue/catalogue.html' ,{'clee':solution,'categorie':solution2})
+    return render(request,'catalogue/catalogue.html' ,{'clee':product,'categorie':categoryProduct})
 
 @csrf_exempt
 def panier(request):

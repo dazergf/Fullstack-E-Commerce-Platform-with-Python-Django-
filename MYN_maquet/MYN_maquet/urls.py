@@ -7,4 +7,5 @@ urlpatterns = [
     path('', include("marquet.urls")),
     path('admin/', lambda request: redirect('http://localhost/phpmyadmin')),
     path('catalogue/', include("catalogue.urls")),
+    
 ]
