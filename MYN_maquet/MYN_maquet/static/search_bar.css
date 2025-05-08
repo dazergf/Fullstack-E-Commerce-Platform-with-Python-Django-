@@ -2,10 +2,11 @@
 .search-container
 {
     flex-grow: 2;
+    margin: 0 20px;
 }
 .search-form {
     display: flex;
-    max-width: 500px; 
+    width: 100%; 
     background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 25px;
@@ -36,21 +37,11 @@
 .search-form button:hover {
     background-color: #629c04;
 }
-.search-container-toggle {
-    display: none;
-    
-}
-.search-container-toggle.active {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    background-color: white;
+.search-container.active .search-form {
     position: absolute;
-    width: 200px;
-    padding: 1rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 0 0 8px 8px;
-    z-index: 100;
-    animation: slideDown2 1s ease forwards;
+    top: 110%;
+    right: 10px;
+    width: 70vw;
+    display: flex;
+    margin: 0 auto;
 }
-

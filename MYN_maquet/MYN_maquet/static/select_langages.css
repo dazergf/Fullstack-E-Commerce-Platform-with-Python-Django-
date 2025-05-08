@@ -10,7 +10,7 @@
     gap: 10px;
     background-color: white;
     border: 1px solid #ccc;
-    padding: 8px 14px;
+    /* padding: 8px 14px; */
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.5s ease;
@@ -29,15 +29,15 @@
 }
 
 .langue-toggle img {
-    width: 20px;
-    height: 20px;
+    width: 2.4vw;
+    min-width: 20px;
 }
 
 .langue-form {
     display: none;
     position: absolute;
     top: 110%;
-    left: 0;
+    right: 10px;
     z-index: 100;
     background-color: white;
     border: 1px solid #ccc;

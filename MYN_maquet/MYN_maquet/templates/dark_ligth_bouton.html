@@ -1,11 +1,11 @@
 {% load static %}
-<div>
+
     <button class="dark_light_toggle active" aria-label="Toggle Dark/Light Mode">
         <img src="{% static 'marquet/images/light_mode.png' %}" alt="Dark Mode" id="dark-light-icon">
-        <span class="toggle-text">Light</span>
+        <span class="toggle-text">|Light</span>
     </button>
     
-</div>
+
 <script>
     document.addEventListener("DOMContentLoaded", () => {
         const toggleButton = document.querySelector('.dark_light_toggle');

@@ -8,9 +8,9 @@
 header {
     font-size: 1rem;
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap:nowrap;
     
-    gap: 30px;
+    gap: 0;
     align-items: center;
     padding: 20px;
     background-color:rgb(57, 56, 56);
@@ -22,8 +22,8 @@ header {
 
 .logo-container .logo {
     height: 5vw;
-    min-height: 50px;
-    max-height: 100px;
+    min-height: 30px;
+
 
 }
 
@@ -32,14 +32,15 @@ header {
     display: none;
     background: none;
     border: none;
-
+    width: 2.4vw;
+    min-width: 20px;
     cursor: pointer;
     align-items: center;
 }
 
 .menu-toggle img {
-    width: 24px;
-    margin-right: 8px;
+    width: 100%;
+    
 }
 
 .menu_list {
@@ -71,8 +72,8 @@ header {
 /* Profil utilisateur */
 .profil {
     display: flex;
-    align-items: center;
     gap: 15px;
+    align-items: center;
     position: relative;
 }
 
@@ -98,25 +99,38 @@ header {
 .profil a button:hover {
     background-color: #629c04;
 }
+/* search toggle */
+.search-toggle {
+    display: none;
 
+}
 
 /* Theme and language toggle */
 .theme-and-langage-bouton {
     display: none;
+    order: 1;
 }
 
 .theme-and-langage-container {
     display: flex;
     align-items: center;
     gap: 10px;
-    order: 1;
+
+    /* order: 1; */
+   
 }
 .dark_light_toggle {
     display: flex;
     align-items: center;
-    gap: 6px;
+    
+    margin: 0 5px;
     transition: background-color 0.5s ease;
 
+    
+}
+.dark_light_toggle img{
+    width: 2.4vw;
+    min-width: 20px;
 }
 
 .dark_light_toggle:hover {
@@ -180,6 +194,9 @@ header {
         display: none;
         order: -1;
     }
+    .search-toggle {
+        display: block;
+    }
 
 }
 
@@ -197,7 +214,7 @@ header {
         order: 1;
         position: absolute;
         top: 110%;
-        left: 0;
+        right: 10px;
         z-index: 100;
         background-color: white;
         border: 1px solid #ccc;
@@ -210,10 +227,22 @@ header {
 
     .theme-and-langage-bouton {
         display: block;
-        order: 1;
+        height: 10px;
+        min-height: 27px;
+        
+    }
+    .theme-and-langage-bouton img {
+       height: 100%;
+        width: auto;
+        
 
     }
 
 
+}
+@media (max-width: 426px) {
+    .search-form button {
+        display: none;
+    }
 
 }
