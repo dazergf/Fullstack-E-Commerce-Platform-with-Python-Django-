@@ -1,10 +1,8 @@
 {% load static %}
-<div class="langue-selector">
+<div class="langue-selector ">
     <a href="#" class="langue-toggle">
-        
-        <img src="{% static 'marquet/images/monde.png' %}" alt="Icône langue"> 
-        <span>Langues</span>
-        
+        <img src="{% static 'marquet/images/langage.png' %}" alt="Icône langue">
+        <span class="active">langue</span>
     </a>
     <div class="langue-form">
         <form action="" method="post">
@@ -19,3 +17,25 @@
         </form>
     </div>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const toggle = document.querySelector('.langue-toggle');
+        const selector = document.querySelector('.langue-selector');
+    
+        if (toggle && selector) {
+            // Toggle affichage du menu
+            toggle.addEventListener('click', function (e) {
+                e.preventDefault();
+                selector.classList.toggle('active');
+            });
+    
+            // Fermer si clic en dehors
+            document.addEventListener('click', function (e) {
+                if (!selector.contains(e.target)) {
+                    selector.classList.remove('active');
+                }
+            });
+        }
+    });
+    </script>
+    

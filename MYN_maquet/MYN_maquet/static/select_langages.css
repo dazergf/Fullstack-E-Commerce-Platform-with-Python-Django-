@@ -1,70 +1,84 @@
 .langue-selector {
     position: relative;
     display: inline-block;
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
 }
 
 .langue-toggle {
     display: flex;
     align-items: center;
-    gap: 8px;
-    background-color: #f0f0f0;
-    padding: 10px 15px;
-    border-radius: 8px;
-    text-decoration: none;
-    color: #333;
+    gap: 10px;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 8px 14px;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.5s ease;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: clamp(0.7rem, 1vw, 1.1rem);
 }
 
 .langue-toggle:hover {
-    background-color: #e0e0e0;
+    background-color: #e6fbc4;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transform: scale(1.02);
+    transition: transform 0.3s ease, background-color 0.5s ease;
+    text-shadow: 0px 1px 1px #5e9e93;
 }
 
-
+.langue-toggle img {
+    width: 20px;
+    height: 20px;
+}
 
 .langue-form {
     display: none;
     position: absolute;
     top: 110%;
     left: 0;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    padding: 15px;
-    border-radius: 10px;
+    z-index: 100;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 1rem;
+    border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
     min-width: 220px;
+    font-size: 14px;
 }
 
-.langue-selector:hover .langue-form {
+.langue-selector.active .langue-form {
     display: block;
+    animation: slideDown 1s ease forwards;
 }
 
 .langue-form p {
-    margin: 0 0 10px;
+    margin-bottom: 10px;
     font-weight: bold;
-    color: #555;
+    color: #333;
 }
 
 .langue-form select {
     width: 100%;
     padding: 8px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
     margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
 }
 
 .langue-form input[type="submit"] {
-    background-color: #007bff;
+    background-color: #9dff00;
     color: white;
+    padding: 8px 14px;
     border: none;
-    padding: 8px 12px;
-    border-radius: 6px;
+    border-radius: 5px;
     cursor: pointer;
+    font-weight: bold;
     transition: background-color 0.3s ease;
 }
 
 .langue-form input[type="submit"]:hover {
-    background-color: #0056b3;
+    background-color: #629c04;
 }

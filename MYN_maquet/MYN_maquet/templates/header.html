@@ -3,15 +3,14 @@
     <!-- Logo principal -->
     <div class="logo-container">
         <a href="{% url 'acceuil' %}">
-            <img src="{% static 'marquet/images/2.png' %}" alt="Logo du site" class="logo">
+            <img src="{% static 'marquet/images/my_logo.png' %}" alt="Logo du site" class="logo">
         </a>
     </div>
 
     <!-- Menu de navigation -->
     <nav class="menu">
         <button class="menu-toggle" aria-label="Ouvrir le menu">
-            <img src="{% static 'marquet/images/menu.png' %}" alt="Icône menu">
-            Menu
+            <img src="{% static 'marquet/images/liste-a-puces.png' %}" alt="Icône menu">
         </button>
         <ul class="menu_list">
             <li><a href="{% url 'acceuil' %}">Accueil</a></li>
@@ -22,18 +21,58 @@
     </nav>
 
     <!-- bare de recherche-->
-    {% include "search_bar.html" %} 
-    
+    {% include "search_bar.html" %}
+
     <!-- Profil utilisateur -->
     <div class="profil">
-        
-        {% include "select_langages.html" %} 
-        <a href="{% url 'login' %}" class="login-link">
-           Se connecter
-        </a>
-        <a href="{% url 'register' %}" class="register-link">
-            <button>S'inscrire</button>
+        <button type="submit" class="theme-and-langage-bouton" aria-label="Ouvrir le menu des langages">
+            <img src="{% static 'marquet/images/menu-vertical.png' %}" alt="langage and theme icon image ">
+        </button>
+        <div class="theme-and-langage-container">
+            {% include "select_langages.html" %}
+            {% include "dark_ligth_bouton.html" %}
+        </div>
+
+        <a href="{% url 'login' %}" class="register-link">
+            <button>Se connecter</button>
         </a>
     </div>
-    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const menuList = document.querySelector('.menu_list');
+
+            const themeLangageContenaire = document.querySelector('.theme-and-langage-container');
+            const themeLangagebouton = document.querySelector('.theme-and-langage-bouton');
+
+            document.addEventListener('click', (event) => {
+                const clickedToggle = menuToggle.contains(event.target);
+                const clickedMenu = menuList.contains(event.target);
+
+                if (clickedToggle) {
+                    // Si on clique sur le bouton, on toggle
+                    menuList.classList.toggle('active');
+                } else if (!clickedMenu) {
+                    // Si on clique ailleurs que sur le menu, on ferme
+                    menuList.classList.remove('active');
+                }
+            });
+            document.addEventListener('click', (event) => {
+                const clickedButton = themeLangagebouton.contains(event.target);
+                const clickedContenaire = themeLangageContenaire.contains(event.target);
+
+                if (clickedButton) {
+                    // Si on clique sur le bouton, on toggle
+                    themeLangageContenaire.classList.toggle('active');
+                } else if (!clickedContenaire) {
+                    // Si on clique ailleurs que sur le menu, on ferme
+                    themeLangageContenaire.classList.remove('active');
+                }
+            });
+
+
+        });
+
+    </script>
+
 </header>

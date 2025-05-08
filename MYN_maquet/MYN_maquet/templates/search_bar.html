@@ -1,6 +1,8 @@
-<div class="search-container">
+{% load static %}
+<div class="search-container ">
     <form method="get" action="/catalogue/search" class="search-form">
         <input type="search" name="Barre_de_recherche" placeholder="Rechercher...">
-        <button type="submit">🔍</button>
+        <button type="submit"><img src="{% static 'marquet/images/search_locate_find_6278.png' %}" alt="search icon image " ></button>
     </form>
+    <img  class="search-container-toggle" src="{% static 'marquet/images/search_locate_find_6278.png' %}" alt="search icon image " >
 </div>
