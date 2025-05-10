@@ -1,0 +1,159 @@
+/* Variables pour les deux thèmes */
+:root {
+    --color-primary: #9CFF01;
+    --color-secondary: #35845B;
+    --color-tertiary: #629D05;
+
+    --color-border: #ccc;
+    --color-shadow: rgba(0, 128, 0, 0.3);
+
+    --color-text-primary: #445140;
+    --color-text-secondary: #1E5B80;
+
+    --color-text-hover: #1c1c1c;
+    --color-text-secondary-hover: #1E5B80;
+
+    --bg-color: #ffffff;
+    --bg-color2: #f3eded;
+}
+
+.dark-mode {
+    --color-primary: #9CFF01;
+    --color-secondary: #35845B;
+    --color-tertiary: #629D05;
+
+    --color-border: #888;
+    --color-shadow: rgba(151, 151, 151, 0.3);
+
+    --color-text-primary: #e0ffe0;
+    --color-text-secondary: #79d3e5;
+
+    --color-text-hover: #1a9393;
+    --color-text-secondary-hover: #1E5B80;
+
+    --bg-color: rgb(129, 124, 124);
+    --bg-color2: #2c2c2c;
+}
+
+/* Base */
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    background: url('../marquet/images/-612x612.jpg') center / cover no-repeat;
+    color: var(--color-text-primary);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    text-align: center;
+    color: var(--color-text-primary);
+}
+
+/* Form Container */
+.formulaire_page {
+    background-color: var(--bg-color2);
+    border: 1px solid var(--color-border);
+    box-shadow: 0 4px 12px var(--color-shadow);
+    padding: 20px;
+    max-width: 500px;
+    /* min-height: 400px;
+    height: 40vh;
+    max-height: 600px; */
+
+    margin: 50px auto;
+    border-radius: 8px;
+}
+
+/* Form */
+form input,
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    margin-bottom: 15px;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    background-color: white;
+}
+
+form textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+input[type="submit"] {
+    background-color: var(--color-primary);
+    color: var(--color-text-hover);
+    border: none;
+    padding: 12px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: var(--color-secondary);
+    color: white;
+}
+
+/* Navigation */
+.boutton_retour {
+    text-align: left;
+}
+
+
+.retour {
+    text-decoration: none;
+    color: var(--color-text-primary);
+    font-weight: bold;
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    background-color: var(--bg-color);
+    border: 1px dashed #000;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+.retour:hover {
+    color: var(--color-text-hover);
+}
+
+a {
+    color: var(--color-text-secondary);
+}
+
+a:hover {
+    color: var(--color-text-secondary-hover);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .formulaire_page {
+        margin: 20px;
+        padding: 15px;
+        height: auto;
+    }
+
+    form input,
+    form textarea {
+        font-size: 0.95rem;
+    }
+
+    input[type="submit"] {
+        font-size: 1rem;
+        padding: 10px;
+    }
+
+    body {
+        background: url('../marquet/images/istockphoto.jpg') center / cover no-repeat;
+    }
+}

@@ -1,0 +1,129 @@
+
+:root {
+    --color-primary: #9CFF01;
+    --color-secondary: #35845B;
+    --color-tertiary: #629D05;
+
+
+    --color-border: #ccc;
+    --color-shadow: green;
+
+    --color-text-primary: #445140;
+    --color-text-secondary: #1E5B80;
+
+    --color-text-hover: rgb(184, 218, 32);
+    --color-text-secondary-hover: #1e805c;
+
+    --bg-color: rgb(255, 255, 255);
+    --bg-color2: #f3eded;
+}
+
+.dark-mode {
+    --color-primary: #9CFF01;
+    --color-secondary: #35845B;
+    --color-tertiary: #629D05;
+
+
+    --color-border: #ccc;
+    --color-shadow: rgb(151, 151, 151);
+
+    --color-text-primary: #6bee64;
+    --color-text-secondary: #79d3e5;
+
+    --color-text-hover: #1a9393;
+    --color-text-secondary-hover: #1E5B80;
+
+    --bg-color: #1e1e1e;
+    --bg-color2: #353434;
+}
+.main{
+  background-color: var(--bg-color);
+}
+.presentation-section {
+    color: var(--color-text-primary);
+    background-color: var(--bg-color);
+    text-align: center;
+    padding: 80px 20px;
+    background:url("../marquet/images/acceuil1.JPG") no-repeat center center/cover ;
+    min-height: 400px;
+}
+
+.presentation h1 {
+  text-align: center;
+  font-size: clamp(2rem, 3vw, 4rem);
+  padding: 1.5rem 1rem;
+  color: var(--color-text-primary);
+  background-color: var(--bg-color2);
+  margin: 0 9%;
+
+}
+
+/* Wrapper général des cartes */
+.features-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+/* Cartes individuelles */
+.feature-card {
+  background-color: var(--bg-color2);
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.feature-card:hover {
+  transform: scale(1.02);
+}
+
+/* Images des cartes */
+.feature-image {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 1rem;
+}
+
+/* Titres des cartes */
+.feature-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+/* Descriptions */
+.feature-description {
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+}
+
+/* Responsive pour tablettes et plus grands écrans */
+@media (min-width: 600px) {
+  .features-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .features-wrapper {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .feature-image {
+    width: 72px;
+    height: 72px;
+  }
+
+  .feature-title {
+    font-size: 1.4rem;
+  }
+
+  .feature-description {
+    font-size: 1rem;
+  }
+}
+

@@ -1,235 +1,61 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta sharset="utf-8">
-        {% load static %}
-        <link rel="stylesheet" href="{% static 'marquet/home.css' %}">
-    </head>
+{% extends 'base.html' %}
+{% load static %}
 
-    <body>
-        <header>
-            <div class="liste">
-                <ul class="liste1">
-                        <li class="ryss"><a href="#"><img src="{% static 'marquet/images/liste.png' %}">Nos categories</a>
-                            <!-- liste des categoriesdans longlet menu -->
-                            <form  method="GET" action="/catalogue/panier/" >
-                                <div class="menu">
-                                    <ul class="liste2">
-                                        {% for i in categorie %}
-                                            <li class="liste2_"><p>{{ i.0 }}</p>
-                                                <ul class="sous_liste2">
-                                                    {% for j in produit %}
-                                                        {% if j.6 == i.0 %}
-                                                            <li><p><input type="checkbox" value="{{ j.0 }}" name="produit">{{ j.2 }}</p>
-                                                                <div class="images">
-                                                                    <img src="{% static j.10 %}" alt="">
-                                                                </div>
-                                                            </li>
-                                                        {% endif %}
-                                                    {% endfor %}
-                                                </ul>
-                                            </li>
-                                        {% endfor %}
-                                    </ul> 
-                                    <input class="button" type="submit"  value="CONFIRMER" name="CONFIRMER_CATALOGUE">
-                                </form>  
-                            </div>
-                        </li>
-                        <li><a href="{% url "catalogue" %}">catalogue</a></li>
-                        <li><a href="#" style="color: transparent">Nous sommes qui</a></li>
-                    </ul>    
-                </div>
-                
-                <img src="{% static 'marquet/images/2.png' %}" class="logo">
+{% block extends_css %}
+<link rel="stylesheet" href="{% static 'accueil/home.css' %}">
+{% endblock extends_css %}
 
-             
-                <div class="profil">
-                    <i><a href=""><img src="{% static 'marquet/images/monde.png' %}">Langues</a>
-                        <div class="langue">
-                            <form action="">
-                                <p style="font-weight: bold;">Selectionnez une langue de votre choix</p>
-                                <select name="langue" id="">
-                                        <option value="">Français</option>
-                                        <option value="">Anglais</option>
-                                        <option value="">Portugais</option>
-                                </select>
-                                <input type="submit" value="SAUVEGARDER">
-                            </form>
-                        </div>
-                    </i>
+{% block block %}
+<section class="presentation-section">
+    <section class="presentation">
 
-                   
 
-                    <!-- j'ai aporter des modification ici_________________________________________ -->
-                        <div class="compte">
-                            <img src="{% static 'marquet/images/user.png' %}" class="ph">
-                            <div class="nom">
-                                <p>{{ user.Nom_client }}</p>
-                                <p>{{ user.prenom_client }}</p>
-                            </div>
-                            <div class="NomPrenom">
-                                <a href="{% url "mon_compte" %}" style="background-color: rgb(157, 157, 236);">Mon compte</a>
-                                <a href="{% url "acceuil" %}" style="background-color: rgb(247, 147, 147);">Déconnexion</a>
-                            </div>
-                        </div>
-                    <!-- ____________________________________________________________________________________ -->
+        <h1>LE SUPER MARCHÉ<br>PLUS PROCHE DE CHEZ VOUS</h1>
 
-                </div>
-        </header>
-        <!-- fin du header
-        debut du corps de ma page -->
-        <section class="main">
-            <section class="presentation">
-                    <div class="search-container">
-                        <form method="get" action="/catalogue/search">
-                            <input type="search" name="Barre_de_recherche" placeholder="search" value="">
-                        </form>
-                    </div>
+    </section>
+</section>
+<!-- deuxieme partie -->
+<section class="features-section">
+    <div class="features-wrapper">
+        <div class="feature-card">
+            <img src="https://img.icons8.com/color/96/shopping-cart.png" alt="Produits" class="feature-image">
+            <h2 class="feature-title">Produits de qualité</h2>
+            <p class="feature-description">Nous offrons une large gamme de produits de qualité supérieure.</p>
+        </div>
+        <div class="feature-card">
+            <img src="https://t3.ftcdn.net/jpg/00/37/74/54/360_F_37745402_TRmrIMrOdSnBSP4lg2ZEiACJNoUOgD50.jpg"
+                alt="Livraison rapide" class="feature-image">
+            <h2 class="feature-title">Livraison rapide</h2>
+            <p class="feature-description">Profitez d'une livraison rapide et fiable à votre porte.</p>
+        </div>
+        <div class="feature-card">
+            <img src="https://img.icons8.com/color/96/customer-support.png" alt="Support" class="feature-image">
+            <h2 class="feature-title">Service client exceptionnel</h2>
+            <p class="feature-description">Notre équipe est là pour vous aider à chaque étape.</p>
+        </div>
+    </div>
+</section>
+<section class="features-section">
+    <div class="features-wrapper">
+        <div class="feature-card">
+            <img src="https://img.icons8.com/color/96/guarantee.png" alt="Garantie" class="feature-image">
+            <h2 class="feature-title">Satisfaction garantie</h2>
+            <p class="feature-description">Nous garantissons votre satisfaction ou vous êtes remboursé.</p>
+        </div>
+        <div class="feature-card">
+            <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=96&h=96&q=80"
+                alt="Éco-responsable" class="feature-image">
+            <h2 class="feature-title">Éco-responsable</h2>
+            <p class="feature-description">Nos produits respectent l’environnement à chaque étape.</p>
+        </div>
+        <div class="feature-card">
+            <img src="https://img.icons8.com/color/96/price-tag-euro.png" alt="Prix compétitifs" class="feature-image">
+            <h2 class="feature-title">Prix compétitifs</h2>
+            <p class="feature-description">Des tarifs justes pour une qualité premium.</p>
+        </div>
+    </div>
+</section>
 
-                    <div class="tableau"><img src="{% static 'marquet/images/planche3.png' %}"></div>
+{% endblock block %}
 
-                    <h1>LE SUPER MARCHE<br>PLUS PROCHE DE CHEZ VOUS</h1>
-            </section>
-            <!-- deuxieme partie -->
-            <section>
-                <div class="ss">
-                    <div class="pub-text">Découvrez notre offre spéciale !</div>
-                <div id="slider">
-                    <ul id="slideWrap">
-                        <li><img src="{% static 'marquet/images/affiche-suspendu-noir-vendredi-50.jpg' %}" ></li>
-                        <li><img src="{% static 'marquet/images/chaussures-de-basket.jpg' %}" alt=""></li>
-                        <li><img src="{% static 'marquet/images/nikes1.jpg' %}" alt=""></li>
-                        <li><img src="{% static 'marquet/images/nike_streakfly_2-1024x767.jpg' %}" alt=""></li>
-                        <li><img src="{% static 'marquet/images/nike4.jpg' %}" alt=""></li>
-                    </ul>
-                    
-                    <a id="prev" href="#"></a>
-                    <a id="next" href="#"></a>
-                </div>
-               
-                <script>
-                    const slideWrap = document.getElementById('slideWrap');
-                    const prevButton = document.getElementById('prev');
-                    const nextButton = document.getElementById('next');
-                    let currentIndex = 0;
-            
-                    function changeSlide(direction) {
-                        currentIndex += direction;
-                        if (currentIndex < 0) {
-                            currentIndex = slideWrap.children.length - 1;
-                        } else if (currentIndex >= slideWrap.children.length) {
-                            currentIndex = 0;
-                        }
-                        slideWrap.style.left = `-${currentIndex * 100}%`;
-                    }
-    
-            
-                    prevButton.addEventListener('click', () => changeSlide(-1));
-                    nextButton.addEventListener('click', () => changeSlide(1));
-            
-                    // Auto slide  3 seconds
-                    setInterval(() => changeSlide(1), 3000);
-                </script>
-                <!--slider2-->
-                <div id="slider1">
-                    <ul id="slideWrap1">
-                        <li><img src="{% static 'marquet/images/pub1.jpeg' %}" alt=""></li>
-                        <li><img src="{% static 'marquet/images/pub2.jpeg' %}" alt=""></li>
-                        <li><img src="{% static 'marquet/images/IMG_3776.JPG' %}" alt=""></li>
-                        <li><img src="{% static 'marquet/images/acceuil2.JPG' %}" alt=""></li>
-                        <li><img src="{% static 'marquet/images/espoir.jpeg' %}" alt=""></li>
-                    </ul>
-                    <a id="prev" href="#"></a>
-                    <a id="next" href="#"></a>
-                </div>
-                <script>
-                    const slideWrap1 = document.getElementById('slideWrap1');
-                    const prevButton1 = document.getElementById('prev');
-                    const nextButton1 = document.getElementById('next');
-                    let currentIndex1 = 0;
-            
-                    function changeSlide2(direction) {
-                        currentIndex += direction;
-                        if (currentIndex < 0) {
-                            currentIndex1 = slideWrap1.children.length - 1;
-                        } else if (currentIndex >= slideWrap1.children.length) {
-                            currentIndex = 0;
-                        }
-                        slideWrap1.style.left = `-${currentIndex * 100}%`;
-                    }
-            
-                    prevButton1.addEventListener('click', () => changeSlide(-1));
-                    nextButton1.addEventListener('click', () => changeSlide(1));
-            
-                    // Auto slide  3 seconds
-                    setInterval(() => changeSlide2(1), 3000);
-                </script>
-                <!--slider2-->
-            
-                <div id="slider2">
-                    
-                    <ul id="slideWrap2">
-                        
-                        <li><img src="{% static 'marquet/images/Corndogs-7832ef6.jpg' %}" alt=""></li>
-                        <li><img src="{% static 'marquet/images/164712019-hamburger-fast-food-sandwich-embleme-realiste-isole-sur-illustration-vectorielle-fond-blanc.jpg' %}" alt=""></li>
-                        <li><img src="{% static 'marquet/images/3312701-poulet-frit-restauration-rapide-sur-plat-blanc-isole-sur-fond-blanc-gratuit-photo.jpg' %}" alt=""></li>
-                        <li><img src="{% static 'marquet/images/35c1c89e-408c-4449-9abe-f109068f40c0.jpg' %}" alt=""></li>
-                        <li><img src="{% static 'marquet/images/17tootired-grilled-cheese-articleLarge.jpg' %}" alt=""></li>
-                    </ul>
-                    <a id="prev" href="#"></a>
-                    <a id="next" href="#"></a>
-                </div>
-                <script>
-                    const slideWrap2 = document.getElementById('slideWrap2');
-                    const prevButton2 = document.getElementById('prev');
-                    const nextButton2 = document.getElementById('next');
-                    let currentIndex2 = 0;
-            
-                    function changeSlide3(direction) {
-                        currentIndex += direction;
-                        if (currentIndex2 < 0) {
-                            currentIndex2 = slideWrap2.children.length - 1;
-                        } else if (currentIndex >= slideWrap2.children.length) {
-                            currentIndex = 0;
-                        }
-                        slideWrap2.style.left = `-${currentIndex * 100}%`;
-                    }
-            
-                    prevButton2.addEventListener('click', () => changeSlide(-1));
-                    nextButton2.addEventListener('click', () => changeSlide(1));
-            
-                    // Auto slide  3 seconds
-                    setInterval(() => changeSlide3(1), 3000);
-                </script>
-                </div>
-            </section>
-            <script>
-                // JavaScript pour changer la couleur de la bordure
-                const screen = document.querySelector('.screen');
-                const colors = ['#e74c3c', '#27ae60', '#f39c12', '#9b59b6'];
-        
-                function changeBorderColor() {
-                    const randomColor = colors[Math.floor(Math.random() * colors.length)];
-                    screen.style.borderColor = randomColor;
-                }
-        
-                setInterval(changeBorderColor, 2000); // Change la bordure toutes les 2 secondes
-            </script>
-        </section>
-        <footer>
-            <div class="foot">
-                <h2>Contactez-nous</h2>
-                <p>Email: <a href="mailto:josiasbatha900@gmail.com">josiasbatha900@gmail.com</a></p>
-                <p>Téléphone: +242 06 437 44 85 </p>
-                <p>Adresse: 15 rue Mbaka, Poto-Poto Brazzaville, Congo</p>
-                <div class="social-media">
-                    <a href="https://wa.me/+242066328561"><img src="{% static 'marquet/images/icons8-whatsapp-48.png' %}" alt="WhatsApp"></a>
-                    <a href="https://www.facebook.com/"><img src="{% static 'marquet/images/icons8-facebook-nouveau-48.png' %}" alt="Facebook"></a>
-                    <a href="https://www.twitter.com/"><img src="{% static 'marquet/images/icons8-x-48.png' %}" alt="Twitter"></a>
-                    <a href="https://www.instagram.com"><img src="{% static 'marquet/images/icons8-instagram-48.png' %}" alt="Instagram"></a>
-                    <a href="https://www.tiktok.com/"><img src="{% static 'marquet/images/icons8-tiktok-48.png' %}" alt="TikTok"></a>
-                </div>
-            </div>
-        </footer>
-    </body>
-</html>
+

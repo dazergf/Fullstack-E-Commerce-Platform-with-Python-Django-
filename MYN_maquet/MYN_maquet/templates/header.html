@@ -2,18 +2,18 @@
 <header>
     <!-- Logo principal -->
     <div class="logo-container">
-        <a href="{% url 'acceuil' %}">
-            <img src="{% static 'marquet/images/my_logo.png' %}" alt="Logo du site" class="logo">
+        <a href="{% url 'accueil' %}">
+            <img src="{% static 'images/my_logo.png' %}" alt="Logo du site" class="logo">
         </a>
     </div>
 
     <!-- Menu de navigation -->
     <nav class="menu">
         <button class="menu-toggle" aria-label="Ouvrir le menu">
-            <img src="{% static 'marquet/images/menu-vertical.png' %}" alt="Icône menu">
+            <img src="{% static 'images/menu-vertical.png' %}" alt="Icône menu">
         </button>
         <ul class="menu_list">
-            <li><a href="{% url 'acceuil' %}">Accueil</a></li>
+            <li><a href="{% url 'accueil' %}">Accueil</a></li>
             <li><a href="{% url 'catalogue' %}">Notre Cataloque</a></li>
             <li><a href="">Nos Marques</a></li>
             <li><a href="#">Nos Promotions</a></li>
@@ -26,48 +26,62 @@
     <!-- Profil utilisateur -->
     <div class="profil">
         <button class="search-toggle" aria-label="Ouvrir le menu de recherche">
-            <img src="{% static 'marquet/images/search_locate_find_6278.png' %}" alt="search icon image " >
+            <img src="{% static 'images/search_locate_find_6278.png' %}" alt="search icon image ">
         </button>
-        <button type="submit" class="theme-and-langage-bouton" aria-label="Ouvrir le menu des langages">
-            <img src="{% static 'marquet/images/icons8-wrench-50.png' %}" alt="langage and theme icon image ">
+        <button type="submit" class="theme-and-langage-bouton" aria-label="Ouvrir le menu themes et langages">
+            <img src="{% static 'images/icons8-wrench-50.png' %}" alt="langage and theme icon image ">
         </button>
+
         <div class="theme-and-langage-container">
             {% include "select_langages.html" %}
             {% include "dark_ligth_bouton.html" %}
         </div>
 
+        {% if user.Nom_client and user.prenom_client %}
+        <div class="utilisateur">
+
+            <div class="nom">
+                <a href="{% url 'mon_compte' %}">
+                    <p>👤{{user.prenom_client }}-{{ user.Nom_client | slice:":3"}}....</p>
+                </a>
+            </div>
+            <a href="{% url 'logout' %}" class="btn-deconnexion">Se déconnecter</a>
+        </div>
+        {% else %}
         <a href="{% url 'login' %}" class="register-link">
             <button>Se connecter</button>
         </a>
+        {% endif %}
+
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const menuToggle = document.querySelector('.menu-toggle');
             const menuList = document.querySelector('.menu_list');
-    
+
             const searchToggle = document.querySelector('.search-toggle');
             const searchContainer = document.querySelector('.search-container');
-    
+
             const themeLangageButton = document.querySelector('.theme-and-langage-bouton');
             const themeLangageContainer = document.querySelector('.theme-and-langage-container');
-    
+
             document.addEventListener('click', (event) => {
                 const target = event.target;
-    
+
                 // Gestion du menu de navigation
                 if (menuToggle && menuToggle.contains(target)) {
                     menuList?.classList.toggle('active');
                 } else if (!menuList?.contains(target)) {
                     menuList?.classList.remove('active');
                 }
-    
+
                 // Gestion du menu thème/langue
                 if (themeLangageButton && themeLangageButton.contains(target)) {
                     themeLangageContainer?.classList.toggle('active');
                 } else if (!themeLangageContainer?.contains(target) && !themeLangageButton?.contains(target)) {
                     themeLangageContainer?.classList.remove('active');
                 }
-    
+
                 // Gestion de la barre de recherche
                 if (searchToggle && searchToggle.contains(target)) {
                     searchContainer?.classList.toggle('active');
@@ -77,5 +91,5 @@
             });
         });
     </script>
-    
+
 </header>

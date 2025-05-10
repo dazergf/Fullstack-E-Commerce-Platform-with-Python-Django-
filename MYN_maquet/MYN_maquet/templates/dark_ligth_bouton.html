@@ -1,8 +1,8 @@
 {% load static %}
 
     <button class="dark_light_toggle active" aria-label="Toggle Dark/Light Mode">
-        <img src="{% static 'marquet/images/light_mode.png' %}" alt="Dark Mode" id="dark-light-icon">
-        <span class="toggle-text">|Light</span>
+        <img src="{% static 'images/light_mode.png' %}" alt="Dark Mode" id="dark-light-icon">
+        <span class="toggle-text"></span>
     </button>
     
 
@@ -11,18 +11,27 @@
         const toggleButton = document.querySelector('.dark_light_toggle');
         const image = toggleButton.querySelector('img');
 
+
         // Définir les chemins (Django interprétera ces lignes)
-        const lightModeSrc = "{% static 'marquet/images/light_mode.png' %}";
-        const darkModeSrc = "{% static 'marquet/images/dark_mode.png' %}";
+        const lightModeSrc = "{% static 'images/light_mode.png' %}";
+        const darkModeSrc = "{% static 'images/dark_mode.png' %}";
+        // texte du bouton
+        const currentText= toggleButton.querySelector('.toggle-text');
+        const lightModeText = "|Light";
+        const darkModeText = "|Dark";
 
         // Appliquer le thème sauvegardé au démarrage
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'dark') {
             document.body.classList.add('dark-mode');
             image.src = darkModeSrc;
+            currentText.innerHTML = darkModeText;
+            
         } else {
             document.body.classList.remove('dark-mode');
             image.src = lightModeSrc;
+            currentText.innerHTML = lightModeText;
+            
         }
 
         // Gestion du clic
@@ -31,9 +40,11 @@
             if (isDark) {
                 image.src = darkModeSrc;
                 localStorage.setItem('theme', 'dark');
+                currentText.innerHTML = darkModeText;
             } else {
                 image.src = lightModeSrc;
                 localStorage.setItem('theme', 'light');
+                currentText.innerHTML = lightModeText;
             }
         });
     });

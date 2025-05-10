@@ -2,74 +2,74 @@
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>catalogue</title>
-        <link rel='stylesheet' href="{% static 'catalogue/css/stylee.css' %}">
-    </head>
 
-    <body>
-        <header>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Catalogue de produits">
+    <meta name="keywords" content="catalogue, produits, ecommerce">
+    <meta name="author" content="dauphin Ngatse">
+    <title>catalogue</title>
+    <link rel='stylesheet' href="{% static 'header.css' %}">
+    <link rel="stylesheet" href="{% static 'select_langages.css' %}">
+    <link rel="stylesheet" href="{% static 'search_bar.css' %}">
+    <link rel='stylesheet' href="{% static 'catalogue/css/stylee.css' %}">
+</head>
 
-            <img src="{% static 'Acceuil/images/2.png' %}" >
-            <h1 ><a href="{% url 'acceuil' %}">Super Marche MYN MARKET</a></h1>
-            <img src="{% static 'Acceuil/images/2.png' %}" >
+<body>
+    {% include "header.html" %}
+    <nav class="Navigation">
+        <h2 class="titre_nav">CATALOGUE</h2>
 
-        </header>
+        <div>
 
-        <!-- boutton acceuil_________________________________________________________-->
-         <nav class="boutton_acceuil">
-            <a href="{% url 'home' %}">ACCEUIL</a>
-        </nav>
-        <!-- ________________________________________________________________________-->
+            {% for item in categorie %}
+            <a href="#{{item.0}}"> {{ item.0 }} </a>
 
-        <nav class="Navigation">
-            <h2 class="titre_nav">CATALOGUE</h2>
+            {% endfor %}
 
-            <div>
-
-                {% for item in categorie %}
-                    <a href="#{{item.0}}"> {{ item.0 }} </a>
-
-                {% endfor %}
-
-            </div>
+        </div>
 
 
-        </nav>
+    </nav>
 
-        <main class='categorie'><form  method="GET" action="/catalogue/panier/" >
+    <main class='categorie'>
+        <form method="GET" action="/catalogue/panier/">
             <form title="ajouter au pannier" method="GET" action="panier/">
                 <section class="cat1">
                     {% for i in categorie %}
-                        <div class="c_titre">
-                            <h1 id="{{i.0}}" class="titre">{{i.0}}</h1>
-                        </div>
-                        <section class='cat1_1'>
-                            {% for j in clee %}
-                                {% if j.6 == i.0 %}
-                                    <article class='article'>
-                                        <div class="checkbox">
-                                            <input type="checkbox" value="{{j.0}}" name="produit" >
-                                            <img class="add" src="{% static 'catalogue\css\images\icons8-add-32 (1).png' %}">
-                                            <span class="ajouter">Ajouter</span>
-                                        </div>
+                    <div class="c_titre">
+                        <h1 id="{{i.0}}" class="titre">{{i.0}}</h1>
+                    </div>
+                    <section class='cat1_1'>
+                        {% for j in clee %}
+                        {% if j.6 == i.0 %}
+                        <label for="{{j.0}}">
+                        <article class='article'>
+                            <div class="checkbox">
+                                <input type="checkbox" id="{{j.0}}" value="{{j.0}}" name="produit">
+                                <img class="add" src="{% static 'catalogue\css\images\icons8-add-32 (1).png' %}">
+                                <span class="ajouter">Ajouter</span>
+                            </div>
 
-                                        <figure>
-                                            <img class="photos" src='{% static j.10 %}' >
-                                            <figcaption class='nom'>{{ j.2 }}</figcaption>
-                                        </figure>
-                                        <span class='prix'>Prix: {{ j.5 }}</span>
-                                        <span class='libelle'>libelle: {{ j.7 }}</span>
-                                    </article>
-                                {% endif %}
-                            {% endfor %}
+                            <figure>
+                                <img class="photos" src='{% static j.10 %}'>
+                                <figcaption class='nom'>{{ j.2 }}</figcaption>
+                            </figure>
+                            <span class='prix'>Prix: {{ j.5 }}</span>
+                            <!-- <span class='libelle'>libelle: {{ j.7 }}</span> -->
+                        </article>
+                        </label>
+                        {% endif %}
+                        {% endfor %}
 
-                        </section>
+                    </section>
                     {% endfor %}
                 </section>
-                
-                <input class="submit_bt" type="submit"   name="CONFIRMER_CATALOGUE" value="CONFIRMER" >
+
+                <input class="submit_bt" type="submit" name="CONFIRMER_CATALOGUE" value="CONFIRMER">
             </form>
-        </main>
-    </body>
+    </main>
+</body>
+
 </html>

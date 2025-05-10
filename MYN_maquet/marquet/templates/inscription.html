@@ -1,42 +1,47 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>formulaire</title>
-        {% load static %}
-        <link rel="stylesheet" href="{% static 'marquet/Inscristyle.css' %}">
-    </head>
+<head>
+    <meta charset="utf-8">
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'formulaire_page/formulaire.css' %}">
+    <title>MYN|INSCRIPTION</title>
+    <link rel="icon" type="image/png" href="{% static 'images/2.ico' %}">
 
-    <body>
+</head>
 
-        <!-- boutton acceuil_________________________________________________________-->
-        <nav class="boutton_acceuil">
-            <a href="{% url "acceuil" %}">ACCEUIL</a>
-        </nav>
-        <!-- ________________________________________________________________________-->
+<body>
 
-        <div class="inscription">
-
-            <h2>INSCRIPTION</h2>
+   
     
-            <form method="post">
+
+   
+
+    <div class="formulaire_page">
+         <!-- Bouton de retour -->
+    <nav class="boutton_retour">
+        <button class="retour" onclick="history.back()">
+            <img src="https://img.icons8.com/ios-filled/50/000000/left.png" alt="Retour" style="width: 20px; height: 20px; margin-right: 5px;"/> Retour
+        </button>
+    </nav>
+
+        <h2>INSCRIPTION</h2>
+
+        <form method="post">
             <!-- {% csrf_token %} -->
-                <input type="text" name="nom_client" id="nom_client" placeholder="entrer votre nom" required><br>       
-                <input type="text" name="prenom_client" id="prenom_client"  placeholder="entrer votre prenom" required> <br>
-                <input type="text" id="numero_telephone_client" name="numero_telephone_client" placeholder="entrer votre numero de telephone" required><br>
-                <input type="text" id="sexe_client" name="sexe_client" placeholder="entrer votre sexe" required><br>  
-                <input type="number" id="age_client" name="age_client" placeholder="entrer votre age" required><br>
-                <input type="text" id="ville_client" name="ville_client" placeholder="votre ville actuel" required><br> 
-                <input type="text" id="district_client" name="district_client" placeholder="votre arrondissement" required><br>
-                <input type="text" id="quartier_client" name="quartier_client" placeholder="votre quartier" required><br>
-                <input type="text" id="numero_parselle_client" name="numero_parselle_client" placeholder="Numero habitat" required><br>
-                <input type="text" id="rue_ou_avenue_client" name="rue_ou_avenue_client" placeholder="Votre rue/avenue" required><br>
-                <textarea id="reponse_de_securite_client" name="reponse_de_securite_client" placeholder="Entrez un textde securite en cas d'oublie de mot de passe" required></textarea><br>
-                <input type="password" id="mot_de_passe_client" name="mot_de_passe_client" placeholder="Entrez un mot de passe" required><br>
-                <input type="email" id="e_mail_client" name="e_mail_client" placeholder="Entrez votre address email" required><br>
-                
-                <input type="submit" value="S'INSCRIRE">
-            </form>
-         </div>
-    </body>
+            <input type="text" name="nom_client" placeholder="Entrez votre nom" required>
+            <input type="text" name="prenom_client" placeholder="Entrez votre prénom" required>
+            <input type="email" name="e_mail_client" placeholder="e-mail" required>            <input type="password" name="mot_de_passe_client" placeholder="Mot de passe" required>
+            <input type="password"  placeholder="Confirmer le Mot de passe" required>
+            
+
+            <input type="submit" value="S'INSCRIRE">
+        </form>
+
+    </div>
+    <script src="{% static 'formulaire.js' %}"></script>
+
+
+</body>
+    
 </html>

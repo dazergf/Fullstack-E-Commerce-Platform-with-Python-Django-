@@ -12,19 +12,21 @@
     <link rel="stylesheet" href="{% static 'search_bar.css' %}">
     <link rel="stylesheet" href="{% static 'footer.css' %}">
     <link rel="stylesheet" href="{% static 'header.css' %}">
-    <link rel="icon" type="image/png" href="{% static 'marquet/images/2.png'' %}">
+    <link rel="icon" type="image/2.ico" href="{% static 'marquet/images/2.png'' %}">
     <title>MYN MARQUET|{% block change_title %} Bienvenue chex vous ...{% endblock change_title %}</title>
     {% block extends_css %}
     {% endblock extends_css %}
 </head>
 
 <body>
+    <section class="main">
     {% include "header.html" %} 
     {% block block %}
 
     
     {% endblock block %}
     {% include "footer.html" %}
+    </section>
 </body>
 
 </html>

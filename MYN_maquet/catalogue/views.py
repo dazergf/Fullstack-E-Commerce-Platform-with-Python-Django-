@@ -3,7 +3,7 @@ from django.views.decorators.csrf import csrf_exempt
 import mysql.connector as conn
 import catalogue.globals as a
 from .models import product,categoryProduct
-import marquet.views 
+import marquet.views
 
 
 @csrf_exempt
@@ -14,7 +14,7 @@ def catalogue(request):
 def panier(request):
     if request.GET.get('CONFIRMER_CATALOGUE')=='CONFIRMER' :
         id_PRODUIT= request.GET.getlist('produit')
-    
+
         # Affichage des données
         post_items = request.POST.items()
         post_keys = request.POST.keys()
@@ -30,25 +30,30 @@ def panier(request):
         cursor=connection.cursor()
         global _resultat
         _resultat= []             #la variable globale qui contient tous les produits selections par le client
-        
+
         for i in id_PRODUIT:
             query = "select * from produit where ID_produit = %s "
             cursor.execute( query,(i,))
             resultat1=cursor.fetchall()
             _resultat.append(resultat1)
 
-            
+
         somme = 0                               #pour la somme des prix des produits
         for i in _resultat:
             somme+=i[0][9]
-
+        user_id = request.session.get('userID')
+        if not user_id:
+            request.session['previous_url'] = request.get_full_path()
+            return redirect('login')
+           
         return render(request,'catalogue/panier.html' ,{'result':_resultat,'somme':somme})
-    
+
     if request.method == 'GET' or request.method == "POST" and request.GET.get('CONFIRMER')== 'CONFIRMER':
 
-        if   a.ID_CLIENT== 0: #variable pour recuperer l'ID_client
-            return redirect('login') 
-        
+        user_id = request.session.get('userID')
+        if  not user_id:  
+            return redirect('login')
+
         else:
             connection=conn.connect(
             host='localhost',
@@ -58,7 +63,7 @@ def panier(request):
             cursor=connection.cursor()
 
             query="insert into commande(id_client) values(%s)"
-            cursor.execute(query,(a.ID_CLIENT,))
+            cursor.execute(query,(user_id,))
             connection.commit()
             query="SELECT ID_commande FROM commande where ID_commande=(SELECT max(ID_commande)FROM commande)"
             cursor.execute(query)
@@ -70,7 +75,7 @@ def panier(request):
                 cursor.execute(query,(ID_commande_max,i[0][0]))
                 connection.commit()
             cursor.close()
-            connection.close()        
+            connection.close()
             return render(request, 'reussi.html')
 
 
@@ -103,7 +108,7 @@ def search(request):
             j+=1
             i=list(i)                                               #convertit les tuples contenant chaque produit de la bd(ou de rechercheList)
             i[2]=i[2].upper()                                       #mettre tout les noms de rechercheList en majuscule
-        
+
             if recherche in i[2]:
                 nouvelleList.append(i)
         if nouvelleList ==[] :
@@ -116,6 +121,5 @@ def search(request):
 
 
 
-       
-  
-        
+
+

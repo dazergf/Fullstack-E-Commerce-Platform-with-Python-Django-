@@ -1,0 +1,164 @@
+/* ========== 1. Variables Thème ========== */
+:root {
+    --bg-body: #f4f6f8;
+    --text-color: #333;
+    --card-bg: #ffffff;
+    --input-bg: #f9f9f9;
+    --input-border: #ccc;
+    --primary-color: #2d89ef;
+    --primary-hover: #1b5fad;
+    --cmd-bg: #f1f3f5;
+    --cmd-border: #2d89ef;
+    --bb-bg: #e7f0fa;
+}
+
+.dark-mode {
+    --bg-body: #121212;
+    --text-color: #e0e0e0;
+    --card-bg: #1e1e1e;
+    --input-bg: #2c2c2c;
+    --input-border: #555;
+    --primary-color: #3a8be0;
+    --primary-hover: #1e5fa8;
+    --cmd-bg: #252525;
+    --cmd-border: #3a8be0;
+    --bb-bg: #2f3b47;
+}
+
+/* ========== 2. Reset de base ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ========== 3. Layout Global ========== */
+body.mon_compte {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-body);
+    color: var(--text-color);
+    padding: 20px;
+}
+
+/* ========== 4. Bouton Retour Accueil ========== */
+nav.boutton_acceuil {
+    margin-bottom: 20px;
+}
+nav.boutton_acceuil a {
+    text-decoration: none;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+nav.boutton_acceuil a:hover {
+    background-color: var(--primary-hover);
+}
+
+/* ========== 5. Informations Utilisateur ========== */
+.info {
+    background-color: var(--card-bg);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.champ {
+    margin-bottom: 15px;
+}
+
+.champ label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.champ input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--input-border);
+    border-radius: 6px;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+}
+
+/* ========== 6. Historique Commandes ========== */
+.commande_client {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.parant_historique {
+    background-color: var(--card-bg);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.affichage_historique {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+ul.CMD {
+    list-style: none;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: var(--cmd-bg);
+    border-left: 4px solid var(--cmd-border);
+    border-radius: 8px;
+}
+
+ul.CMD .a {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+ul.detail {
+    list-style: none;
+    padding-left: 20px;
+}
+
+li.bb {
+    padding: 10px;
+    background-color: var(--bb-bg);
+    margin-bottom: 10px;
+    border-radius: 6px;
+}
+
+li.bb p {
+    margin-bottom: 5px;
+    word-break: break-word;
+}
+
+/* ========== 7. Responsive Mobile ========== */
+@media (max-width: 600px) {
+    .champ input {
+        font-size: 14px;
+    }
+
+    ul.CMD .a {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .affichage_historique {
+        font-size: 18px;
+        text-align: center;
+    }
+
+    nav.boutton_acceuil a {
+        display: block;
+        text-align: center;
+    }
+}

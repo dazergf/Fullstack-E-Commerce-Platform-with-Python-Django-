@@ -12,17 +12,8 @@ def register(request):
         # Récupérer les données du formulaire
         nom_client = request.POST['nom_client']
         prenom_client = request.POST['prenom_client']
-        numero_telephone_client = request.POST['numero_telephone_client']
-        sexe_client = request.POST['sexe_client']
-        age_client = request.POST['age_client']
-        ville_client = request.POST['ville_client']
-        district_client = request.POST['district_client']
-        quartier_client = request.POST['quartier_client']
-        numero_parselle_client = request.POST['numero_parselle_client']
         mot_de_passe_client = request.POST['mot_de_passe_client']
-        reponse_de_securite_client = request.POST['reponse_de_securite_client']
         e_mail_client = request.POST['e_mail_client']
-        rue_ou_avenue_client = request.POST['rue_ou_avenue_client']
 
         # Connecter à la base de données MySQL
         conn = mysql.connector.connect(
@@ -36,15 +27,17 @@ def register(request):
         # Insérer les données dans la table `client`
         query = """
         INSERT INTO client (
-            Nom_client, prenom_client, numero_telephonne_client, sexe_client, age_client,
-            ville_client, district_client, quartier_client, numero_parselle_client,
-            mot_de_passe_client, reponse_de_securite_client, e_mail_client, rue_ou_avenue_client
-        ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+            Nom_client,
+            prenom_client,
+            mot_de_passe_client, 
+            e_mail_client
+        ) VALUES (%s, %s, %s, %s)
         """
         values = (
-            nom_client, prenom_client, numero_telephone_client, sexe_client, age_client,
-            ville_client, district_client, quartier_client, numero_parselle_client,
-            mot_de_passe_client, reponse_de_securite_client, e_mail_client, rue_ou_avenue_client
+            nom_client,
+            prenom_client, 
+            mot_de_passe_client, 
+            e_mail_client
         )
         cursor.execute(query, values)
         conn.commit()
@@ -58,7 +51,7 @@ def register(request):
 
         if user and user[0] is not None:
             #Utilisateur trouvé, rediriger vers une page de succès par exemple
-            a.ID_CLIENT = user[0]                      # variable de l'id du lient connecter
+            request.session['userID'] = user[0]                      # variable de l'id du lient connecter
         return redirect('home')  # Redirigez vers une page de succès après l'inscription
 
     return render(request, 'inscription.html')
@@ -90,8 +83,10 @@ def login(request):
         conn.close()
 
         if user:
-            # Utilisateur trouvé, rediriger vers une page de succès par exemple
-            a.ID_CLIENT = user[0]
+            request.session['userID'] = user[0]
+            if request.session.get('previous_url'):
+                previous_url = request.session.pop('previous_url')
+                return redirect(previous_url)
             return redirect('home')  # Assurez-vous d'avoir défini cette URL dans urls.py
         else:
             # Utilisateur non trouvé, rediriger vers une page d'échec de connexion par exemple
@@ -103,7 +98,7 @@ def login(request):
 
 #definition de vue des info de mon compte
 def mon_compte(request):
-    user_id = a.ID_CLIENT
+    user_id = request.session.get('userID')
     if not user_id:
         return redirect('login')  # Rediriger vers la page de connexion si l'utilisateur n'est pas connecté
 
@@ -148,12 +143,6 @@ def mon_compte(request):
             'Nom_client': user[1],
             'prenom_client': user[2],
             'telephonne': user[3],
-            'sexe_client': user[4],
-            'age_client': user[5],
-            'ville_client': user[6],
-            'district': user[7],
-            'quartier_client': user[8],
-            'parselle': user[9],
             'mot_de_passe': user[10],               
             'e_mail_client': user[12],
             'rue': user[13],
@@ -165,42 +154,8 @@ def mon_compte(request):
 
 #definition de la page d'aceuil mynweb
 @csrf_exempt
-def acceuil(request):
-    a.ID_CLIENT=0
-
-    # vue pour le racourcie des produit _________________________________________________
-    if request.method == 'POST':
-        print("POST"*1000)
-        id_PRODUIT= request.POST.getlist('produit')
-       
-
-        # Affichage des données
-        post_items = request.POST.items()
-        post_keys = request.POST.keys()
-        post_values = request.POST.values()
-        post_copy = request.POST.copy()
-        post_copy['additional_key'] = 'Additional Value'
-        #print(id_PRODUIT)
-
-        connection=mysql.connector.connect(
-            host='localhost',
-            user='root',
-            password='',
-            database='myn',)
-        cursor=connection.cursor()
-        #global  _resultat                    #la viriable globale qui contient tous les produits selections par le client
-        #_resultat= []
-        print(a._resultat)
-        for i in id_PRODUIT:
-            query = "select * from produit where ID_produit = %s "
-            cursor.execute( query,(i,))
-            resultat1=cursor.fetchall()
-            a._resultat.append(resultat1)
-        return redirect(panier)
-    
-    # Passer les données au template
-    #affihage des produits et cat______________________________________________
-    return render(request, 'acceuil.html', {'categorie': cat, 'produit': produits})
+def accueil(request):
+    return render(request, 'acceuil.html')
 
 
 
@@ -208,8 +163,8 @@ def acceuil(request):
 #definition de la page home quand l'utilisateur est connecter sur notre site
 @csrf_exempt
 def home(request):
-    user_id = a.ID_CLIENT
-    print(user_id)
+    user_id = request.session['userID'] 
+
     if not user_id or user_id == 0:       #j'ai aujouter ça___________________________________________
         return redirect('login')
 
@@ -248,7 +203,6 @@ def home(request):
 
      # vue pour le racourcie des produit sur la page home_________________________________________________
     if request.method == 'POST':
-        print("POST"*1000)
         id_PRODUIT= request.POST.getlist('produit')
        
 
@@ -280,3 +234,6 @@ def home(request):
 
 def reussi(request):
     return render(request, 'reussi.html')
+def logout(request):
+    request.session.flush()  # Supprime toutes les données de session
+    return redirect('accueil')  # Redirigez vers la page d'accueil ou de connexion
