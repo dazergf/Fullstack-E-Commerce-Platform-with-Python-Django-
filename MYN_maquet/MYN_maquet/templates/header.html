@@ -37,15 +37,15 @@
             {% include "dark_ligth_bouton.html" %}
         </div>
 
-        {% if user.Nom_client and user.prenom_client %}
+        {% if request.session.prenom_client and request.session.prenom_client %}
         <div class="utilisateur">
 
             <div class="nom">
                 <a href="{% url 'mon_compte' %}">
-                    <p>👤{{user.prenom_client }}-{{ user.Nom_client | slice:":3"}}....</p>
+                    <p>👤{{ request.session.prenom_client  }}-{{  request.session.nom_client  | slice:":3"}}....</p>
                 </a>
             </div>
-            <a href="{% url 'logout' %}" class="btn-deconnexion">Se déconnecter</a>
+            <a href="{% url 'logout' %}" class="btn-deconnexion">déconnexion</a>
         </div>
         {% else %}
         <a href="{% url 'login' %}" class="register-link">

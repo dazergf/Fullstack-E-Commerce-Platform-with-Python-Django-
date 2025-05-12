@@ -1,0 +1,144 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="catalogue, produits, ecommerce">
+    <meta name="author" content="dauphin Ngatse">
+    <meta name="description" content="Page de confirmation de commande">
+    <link rel="icon" type="image/2.ico" href="{% static 'marquet/images/2.png'' %}">
+
+    <title>panier</title>
+
+    <style>
+       
+       
+
+        main {
+            margin:40px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 80%;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            /*distance du tableau par rapport au cadran supermarchje */
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #dee2e6;
+        }
+
+        th {
+            background-color: black;
+            color: rgb(245, 151, 10);
+        }
+
+        tfoot th,
+        tfoot td {
+            background-color: #f1f1f1;
+            font-weight: bold;
+        }
+
+        form {
+            margin-top: 20px;
+            /* espace entre le tableau et le bouton confirmer */
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+
+        img {
+            height: 50px;
+        }
+
+        /* boutton acceuill_________________________________________ */
+        .boutton_acceuil {
+            position: absolute;
+            left: 0;
+            top: 0;
+            margin: 15px 15px;
+            background-color: rgb(159, 159, 176);
+            font-size: large;
+            border-radius: 25px;
+            padding: 5px 12px;
+            margin: 10px auto;
+        }
+
+        .boutton_acceuil a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-family: 'Arial Black';
+        }
+
+        /* ______________________________________________________________*/
+    </style>
+
+</head>
+
+<body>
+
+    <!-- boutton acceuil_________________________________________________________-->
+    <nav class="boutton_acceuil">
+        <a href="{% url 'home' %}">ACCEUIL</a>
+    </nav>
+    <!-- ________________________________________________________________________-->
+    
+    
+
+    <body>
+        
+        <main>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Prix</th>
+                        <th>Image</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in result %}
+                    <tr>
+                        <td>{{ i.0.2 }}</td>
+                        <td>${{ i.0.9 }}</td>
+                        <td><img src="{% static  i.0.10 %}" alt=""></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Prix Total:</th>
+                        <td colspan="2">${{ somme }} </td>
+                    </tr>
+                </tfoot>
+            </table>
+            <form method="get">
+                {% csrf_token %}
+                <input type="submit" value="CONFIRMER" name="CONFIRMER">
+            </form>
+        </main>
+    </body>
+
+</html>

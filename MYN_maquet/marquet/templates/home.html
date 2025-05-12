@@ -17,18 +17,17 @@
 <!-- deuxieme partie -->
 <section class="features-section">
     <div class="features-wrapper">
-        <div class="feature-card">
+        <div class="feature-card" onclick="window.location.href='{% url 'catalogue' %}'">
             <img src="https://img.icons8.com/color/96/shopping-cart.png" alt="Produits" class="feature-image">
             <h2 class="feature-title">Produits de qualité</h2>
             <p class="feature-description">Nous offrons une large gamme de produits de qualité supérieure.</p>
         </div>
-        <div class="feature-card">
-            <img src="https://t3.ftcdn.net/jpg/00/37/74/54/360_F_37745402_TRmrIMrOdSnBSP4lg2ZEiACJNoUOgD50.jpg"
-                alt="Livraison rapide" class="feature-image">
+        <div class="feature-card" onclick="window.location.href='{% url 'livraison' %}'">
+            <img src="https://t3.ftcdn.net/jpg/00/37/74/54/360_F_37745402_TRmrIMrOdSnBSP4lg2ZEiACJNoUOgD50.jpg" alt="Livraison rapide" class="feature-image">
             <h2 class="feature-title">Livraison rapide</h2>
             <p class="feature-description">Profitez d'une livraison rapide et fiable à votre porte.</p>
         </div>
-        <div class="feature-card">
+        <div class="feature-card" onclick="window.location.href='{% url 'service_client' %}'">
             <img src="https://img.icons8.com/color/96/customer-support.png" alt="Support" class="feature-image">
             <h2 class="feature-title">Service client exceptionnel</h2>
             <p class="feature-description">Notre équipe est là pour vous aider à chaque étape.</p>
@@ -43,8 +42,7 @@
             <p class="feature-description">Nous garantissons votre satisfaction ou vous êtes remboursé.</p>
         </div>
         <div class="feature-card">
-            <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=96&h=96&q=80"
-                alt="Éco-responsable" class="feature-image">
+            <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=96&h=96&q=80" alt="Éco-responsable" class="feature-image">         
             <h2 class="feature-title">Éco-responsable</h2>
             <p class="feature-description">Nos produits respectent l’environnement à chaque étape.</p>
         </div>
@@ -57,5 +55,4 @@
 </section>
 
 {% endblock block %}
-
 

@@ -1,16 +1,28 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Formulaire de connexion</title>
+        <link rel="icon" type="image/2.ico" href="{% static 'marquet/images/2.png'' %}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Confirmation">
+    <meta name="keywords" content="catalogue, produits, ecommerce">
+    <meta name="author" content="dauphin Ngatse">
+    <meta name="description" content="Page de confirmation de commande">
+    <title>MYN|Confirmation</title>
     <style>
+        body{
+            background: #97ca85;
+        }
            /* boutton acceuill_________________________________________ */
         .boutton_acceuil{
+            
+            font-size: 17px;
             position: absolute;
             left: 0;
             top: 0;
             margin: 15px 15px;
-            background-color: blue;
+            background-color: rgb(74, 74, 77);
             font-size: large;
             border-radius: 25px;
             padding: 5px 12px;
@@ -24,9 +36,8 @@
         }
 
         div{
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            margin:150px auto;
+;            text-align: center;
         }
         /* ______________________________________ */
     </style>
@@ -34,11 +45,13 @@
     <body>
         <!-- boutton acceuil________________________ -->
         <nav class="boutton_acceuil">
-            <a href="{% url "home" %}">ACCEUIL</a>
+            <a href="{% url "home" %}">Retour</a>
         </nav>
         <!-- ________________________________________ -->
         <div>
-            <h1> commande passer avec succes</h1>
+            <h1> commande passer avec succes ✅✅✅✅</h1>
+            <h2>Merci pour votre confiance</h2>
+            <h2>Nous vous souhaitons une bonne journée</h2>
         </div>
     </body>
 </html>

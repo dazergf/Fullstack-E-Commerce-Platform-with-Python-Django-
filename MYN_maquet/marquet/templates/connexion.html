@@ -30,8 +30,8 @@
 
         <form method="post" action="{% url 'login' %}">
             {% csrf_token %}
-            <input type="email" name="email" placeholder="Adresse email" required>
-            <input type="password" name="Mot_De_passe" placeholder="Mot de passe" required>
+            <input type="email" name="e_mail_client" placeholder="Adresse email" required>
+            <input type="password" name="mot_de_passe_client" placeholder="Mot de passe" required>
             <input type="submit" value="CONNEXION">
         </form>
 

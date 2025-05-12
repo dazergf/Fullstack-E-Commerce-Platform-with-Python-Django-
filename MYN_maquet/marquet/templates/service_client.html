@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="service-client">
+    <meta name="keywords" content="catalogue, produits, ecommerce">
+    <meta name="author" content="dauphin Ngatse"> 
+        <link rel="icon" type="image/2.ico" href="{% static 'marquet/images/2.png' %}">
+
+    <title>Service Client Exceptionnel</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    .service-client {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem 1rem;
+      background: linear-gradient(to right,rgb(37, 37, 36),rgb(19, 40, 14));
+      color: white;
+      text-align: center;
+    }
+
+    .service-client h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .service-client p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      line-height: 1.6;
+    }
+
+    .service-client .btn {
+      margin-top: 2rem;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      background-color: #ffffff;
+      color: #3b82f6;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .service-client .btn:hover {
+      background-color: #e0e7ff;
+    }
+
+    @media (max-width: 600px) {
+      .service-client h1 {
+        font-size: 2rem;
+      }
+
+      .service-client p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="service-client">
+    <h1>Service client exceptionnel</h1>
+    <p>
+      Notre équipe est là pour vous aider à chaque étape. Que ce soit avant, pendant ou après votre commande, nous nous engageons à vous offrir une assistance rapide, professionnelle et personnalisée.
+    </p>
+    <button class="btn" >Contactez-nous</button>
+  </section>
+
+</body>
+</html>

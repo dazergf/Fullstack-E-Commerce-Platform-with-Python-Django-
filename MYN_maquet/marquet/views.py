@@ -6,6 +6,45 @@ import mysql.connector
 import catalogue.globals as a
 from catalogue.views import panier
 
+
+#definition de vue de connection
+@csrf_exempt
+def login(request):
+    if request.method == 'POST':
+        email = request.POST.get('e_mail_client')
+        mot_de_passe = request.POST.get('mot_de_passe_client')
+
+        # Connexion à la base de données MySQL
+        conn = mysql.connector.connect(
+            host='localhost',
+            user='root',
+            password='',
+            database='myn'
+        )
+        cursor = conn.cursor()
+
+        # Vérifier si l'utilisateur existe dans la base de données
+        query = "SELECT * FROM client WHERE e_mail_client = %s AND mot_de_passe_client = %s"
+        cursor.execute(query, (email, mot_de_passe))
+        user = cursor.fetchone()  # Récupère une seule ligne correspondant à l'utilisateur
+
+        
+
+        if user:
+            request.session['userID'] = user[0]
+            request.session['nom_client'] = user[1]
+            request.session['prenom_client'] = user[2]            
+            if request.session.get('previous_url'):
+                previous_url = request.session.pop('previous_url')
+                return redirect(previous_url)
+            return redirect('home')  # Assurez-vous d'avoir défini cette URL dans urls.py
+        else:
+            # Utilisateur non trouvé, rediriger vers une page d'échec de connexion par exemple
+            return HttpResponse("Nom d'utilisateur ou mot de passe incorrect")  # Affichez à nouveau le formulaire de connexion avec un message d'erreur si nécessaire
+
+    # Si la méthode HTTP n'est pas POST, affichez simplement le formulaire de connexion
+    return render(request, 'connexion.html')
+
 @csrf_exempt
 def register(request):
     if request.method == 'POST':
@@ -41,59 +80,9 @@ def register(request):
         )
         cursor.execute(query, values)
         conn.commit()
-#_____________________________ajouté____________________________________
-        query = "select max(id_client) from client"     # recuperation p l'id de l'utilisateur qui vient de s'inscrire
-        cursor.execute(query)                           # ***********
-        user = cursor.fetchone()                       #**************
-#_______________________________________________________________________
-        cursor.close()
-        conn.close()
-
-        if user and user[0] is not None:
-            #Utilisateur trouvé, rediriger vers une page de succès par exemple
-            request.session['userID'] = user[0]                      # variable de l'id du lient connecter
-        return redirect('home')  # Redirigez vers une page de succès après l'inscription
+        return login(request)
 
     return render(request, 'inscription.html')
-
-
-
-#definition de vue de connection
-@csrf_exempt
-def login(request):
-    if request.method == 'POST':
-        email = request.POST.get('email')
-        mot_de_passe = request.POST.get('Mot_De_passe')
-
-        # Connexion à la base de données MySQL
-        conn = mysql.connector.connect(
-            host='localhost',
-            user='root',
-            password='',
-            database='myn'
-        )
-        cursor = conn.cursor()
-
-        # Vérifier si l'utilisateur existe dans la base de données
-        query = "SELECT * FROM client WHERE e_mail_client = %s AND mot_de_passe_client = %s"
-        cursor.execute(query, (email, mot_de_passe))
-        user = cursor.fetchone()  # Récupère une seule ligne correspondant à l'utilisateur
-
-        cursor.close()
-        conn.close()
-
-        if user:
-            request.session['userID'] = user[0]
-            if request.session.get('previous_url'):
-                previous_url = request.session.pop('previous_url')
-                return redirect(previous_url)
-            return redirect('home')  # Assurez-vous d'avoir défini cette URL dans urls.py
-        else:
-            # Utilisateur non trouvé, rediriger vers une page d'échec de connexion par exemple
-            return HttpResponse("Nom d'utilisateur ou mot de passe incorrect")  # Affichez à nouveau le formulaire de connexion avec un message d'erreur si nécessaire
-
-    # Si la méthode HTTP n'est pas POST, affichez simplement le formulaire de connexion
-    return render(request, 'connexion.html')
 
 
 #definition de vue des info de mon compte
@@ -129,10 +118,6 @@ def mon_compte(request):
         cursor.execute(query, (id_CMD,))
         detail_client.append(cursor.fetchall())
 
-    
-    print('*'*10)
-    print(commande_client)
-    print(detail_client)
    
     cursor.close()
     conn.close()     
@@ -237,3 +222,8 @@ def reussi(request):
 def logout(request):
     request.session.flush()  # Supprime toutes les données de session
     return redirect('accueil')  # Redirigez vers la page d'accueil ou de connexion
+
+def service_client(request):
+    return render(request,'service_client.html')  
+def livraison(request):
+    return render(request,'livraison.html')  

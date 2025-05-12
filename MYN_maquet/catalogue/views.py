@@ -8,13 +8,18 @@ import marquet.views
 
 @csrf_exempt
 def catalogue(request):
-    return render(request,'catalogue/catalogue.html' ,{'clee':product,'categorie':categoryProduct})
+    return render(request,'catalogue.html' ,{'clee':product,'categorie':categoryProduct})
 
 @csrf_exempt
 def panier(request):
     if request.GET.get('CONFIRMER_CATALOGUE')=='CONFIRMER' :
         id_PRODUIT= request.GET.getlist('produit')
-
+        if not id_PRODUIT:
+            content=f"""    
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <h1 style='text-align:center;background-color:black ;color:gray'> Pas de produit selectionne</h1><h2 style='color:red ;background-color:black;text-align:center;'></h2><h1>Non trouvé ⚠️⚠️</h1>
+            """
+            return HttpResponse(content)
         # Affichage des données
         post_items = request.POST.items()
         post_keys = request.POST.keys()
@@ -46,7 +51,7 @@ def panier(request):
             request.session['previous_url'] = request.get_full_path()
             return redirect('login')
            
-        return render(request,'catalogue/panier.html' ,{'result':_resultat,'somme':somme})
+        return render(request,'panier.html' ,{'result':_resultat,'somme':somme})
 
     if request.method == 'GET' or request.method == "POST" and request.GET.get('CONFIRMER')== 'CONFIRMER':
 
@@ -114,7 +119,7 @@ def search(request):
         if nouvelleList ==[] :
             content=f"""<h1 style='text-align:center;background-color:black ;color:gray'> Pas de resultat pour cette recherche</h1><h2 style='color:red ;background-color:black ;text-align:center;'> "  {request.GET.get('Barre_de_recherche')}  "</h2><h1>Non trouvé⚠️/h1>"""
             return HttpResponse(content)
-        return render(request, 'catalogue/search.html',{'element_trouve':nouvelleList})
+        return render(request, 'search.html',{'element_trouve':nouvelleList})
 
 
 

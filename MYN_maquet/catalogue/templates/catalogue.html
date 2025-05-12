@@ -13,7 +13,9 @@
     <link rel='stylesheet' href="{% static 'header.css' %}">
     <link rel="stylesheet" href="{% static 'select_langages.css' %}">
     <link rel="stylesheet" href="{% static 'search_bar.css' %}">
-    <link rel='stylesheet' href="{% static 'catalogue/css/stylee.css' %}">
+    <link rel='stylesheet' href="{% static 'catalogue/css/catalogue.css' %}">
+    <link rel="icon" type="image/2.ico" href="{% static 'marquet/images/2.png'' %}">
+
 </head>
 
 <body>
@@ -32,9 +34,8 @@
 
 
     </nav>
-
+    <img class="Menu" src="{% static 'Catalogue/images/icons8-menu-64.png' %}">
     <main class='categorie'>
-        <form method="GET" action="/catalogue/panier/">
             <form title="ajouter au pannier" method="GET" action="panier/">
                 <section class="cat1">
                     {% for i in categorie %}
@@ -45,20 +46,20 @@
                         {% for j in clee %}
                         {% if j.6 == i.0 %}
                         <label for="{{j.0}}">
-                        <article class='article'>
-                            <div class="checkbox">
-                                <input type="checkbox" id="{{j.0}}" value="{{j.0}}" name="produit">
-                                <img class="add" src="{% static 'catalogue\css\images\icons8-add-32 (1).png' %}">
-                                <span class="ajouter">Ajouter</span>
-                            </div>
+                            <article class='article'>
+                                <div class="checkbox">
+                                    <input type="checkbox" id="{{j.0}}" value="{{j.0}}" name="produit">
+                                    <img class="add" src="{% static 'Catalogue/images/icons8-add-32 (1).png' %}">
+                                    <span class="ajouter">Ajouter</span>
+                                </div>
 
-                            <figure>
-                                <img class="photos" src='{% static j.10 %}'>
-                                <figcaption class='nom'>{{ j.2 }}</figcaption>
-                            </figure>
-                            <span class='prix'>Prix: {{ j.5 }}</span>
-                            <!-- <span class='libelle'>libelle: {{ j.7 }}</span> -->
-                        </article>
+                                <figure>
+                                    <img class="photos" src='{% static j.10 %}' onerror="this.onerror=null; this.src='{% static 'catalogue/photos/soins/Gant de bain doux.jpg' %}';">
+                                    <figcaption class='nom'>{{ j.2 }}</figcaption>
+                                </figure>
+                                <span class='prix'>Prix: {{ j.5 }}</span>
+                                <!-- <span class='libelle'>libelle: {{ j.7 }}</span> -->
+                            </article>
                         </label>
                         {% endif %}
                         {% endfor %}
@@ -71,5 +72,14 @@
             </form>
     </main>
 </body>
+   <script>
+    const menu = document.querySelector('.Menu');
+    const nav = document.querySelector('.Navigation');
+
+    menu.addEventListener('click', () => {
+        nav.classList.toggle('active');
+        menu.classList.toggle('active');
+    });
+    </script>
 
 </html>

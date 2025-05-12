@@ -3,48 +3,45 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="catalogue, produits, ecommerce">
+    <meta name="author" content="dauphin Ngatse">
         <title>MYN MARQUET</title>
-        <link rel='stylesheet' href="{% static 'catalogue/css/stylee.css' %}">
+        <link rel='stylesheet' href="{% static 'catalogue/css/catalogue.css' %}">
+        <link rel="icon" type="image/2.ico" href="{% static 'marquet/images/2.png'' %}">
+
     </head>
 
     <body>
-        <header>
-            <img src="{% static 'Acceuil/images/2.png' %}" >
-            <h1 ><a href="{% url 'accueil' %}">Super Marche MYN MARKET</a></h1>
-            <img src="{% static 'Acceuil/images/2.png' %}" >
-        </header>
-        
-        <nav>
-        
-        </nav>   
+         
         <main>
             <form  method="GET" action="/catalogue/panier/" >
                 <section class="cat1">
                     <div class="c_titre">
-                        <h1 id="hygiene" class="titre">R E C H  E R C H</h1>
+                        <h1 id="hygiene" class="titre">R E C H  E R C H E</h1>
                     </div>
                     <section class='cat1_1'>
 
                         {% for i in element_trouve %}
-                            
+                                <label for="{{i.0}}">
                                 <article class='article'>
                                     <div class="checkbox">
 
-                                        <input type="checkbox" value="{{i.0}}" name="produit">
+                                        <input type="checkbox" id={{i.0}} value="{{i.0}}" name="produit">
                                         <span class="ajouter">Ajouter</span>
-                                        <img class="add" src="{% static 'catalogue\css\images\icons8-add-32 (1).png' %}">
+                                        <img class="add" src="{% static 'Catalogue/images/icons8-add-32 (1).png' %}" >
 
                                     </div>
 
                                     <figure>
-                                        <img class="photos" src='{% static i.10 %}' >
+                                        <img class="photos" src='{% static i.10 %}' onerror="this.onerror=null; this.src='{% static 'catalogue/photos/soins/Gant de bain doux.jpg' %}';" >
                                         <figcaption class='nom'>{{i.2}} </figcaption>
                                     </figure>
 
                                     <span class='prix'>Prix:{{i.5}}</span>
                                     <span class='libelle'>libelle:{{i.7}}</span>
                                 </article>
-                            
+                                </label>
                         {% endfor %}
 
                     </section>
@@ -56,6 +53,7 @@
                 <input class="submit_bt" type="submit" name="CONFIRMER_CATALOGUE" value="CONFIRMER" >
             </form>
          </main>    
+             <script src="{% static 'formulaire.js' %}"></script>
 
     </body>
 </html>

@@ -46,30 +46,31 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: var(--bg-color);
     color: var(--color-text-primary);
-    padding: 1rem;
     line-height: 1.6;
     font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+    display: grid;
+    grid-template-areas: 'header header '
+        'navigation catalogue';
+    grid-template-columns: 1fr;
 }
 
-/* Accueil button */
-.boutton_acceuil {
-    margin: 1rem 0;
+header {
+    grid-area: header;
+
 }
 
-.boutton_acceuil a {
-    display: inline-block;
-    background-color: var(--color-secondary);
-    color: white;
-    text-decoration: none;
-    padding: 0.6rem 1.2rem;
-    border-radius: 8px;
-    font-size: clamp(0.95rem, 2vw, 1.1rem);
-    transition: background-color 0.3s ease;
+.Menu {
+    position: fixed;
+    top: 80px;
+    left: 30px;
+    cursor: pointer;
+    max-width: 30px;
+    display: none;
+
 }
 
-.boutton_acceuil a:hover {
-    background-color: var(--color-text-secondary-hover);
-}
+
+
 
 /* Navigation */
 .Navigation {
@@ -78,7 +79,13 @@ body {
     margin-bottom: 2rem;
     border-radius: 10px;
     box-shadow: 0 2px 5px var(--color-shadow);
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    grid-area: navigation;
+
 }
+
 
 .titre_nav {
     font-size: clamp(1.4rem, 4vw, 2rem);
@@ -89,9 +96,12 @@ body {
 
 .Navigation div {
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     gap: 0.8rem;
     justify-content: center;
+    position: sticky;
+    top: 150px;
 }
 
 .Navigation div a {
@@ -111,6 +121,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    grid-area: catalogue;
 }
 
 /* Catégorie titre */
@@ -210,10 +221,16 @@ body {
     margin: 3rem auto 2rem auto;
     display: block;
     transition: background-color 0.3s ease;
+    position: fixed;
+    top: 60vh;
+    left: 70vw;
+    opacity: 0.5;
 }
 
-.submit_bt:hover {
+.submit_bt:hover,
+.submit_bt:focus {
     background-color: var(--color-secondary);
+    opacity: 1;
 }
 
 /* ------------------- Responsive ------------------- */
@@ -226,6 +243,28 @@ body {
         justify-content: center;
     }
 }
+
+@media (max-width: 710px) {
+
+    .search-form {
+        display: none;
+
+    }
+
+    .search-toggle {
+        display: block;
+        margin-right: 10px;
+
+    }
+
+    .article:hover {
+        transform: none;
+        box-shadow: 0 6px 12px var(--color-shadow);
+        background-color: #ea7171;
+    }
+
+}
+
 
 @media (max-width: 480px) {
     .boutton_acceuil a {
@@ -253,7 +292,21 @@ body {
     }
 
     .submit_bt {
-        width: 100%;
+
         font-size: 1.1rem;
+        left: 50vw;
+    }
+
+    .Navigation {
+        display: none;
+    }
+
+    .Menu {
+
+        display: block;
+
+    }
+    .Navigation.active {
+        display: flex;
     }
 }
